@@ -124,10 +124,10 @@ export const PaintCan3D: React.FC = () => {
           {/* Top of can label */}
           <div className="relative z-10 flex items-center justify-between border-b border-slate-700/60 pb-2">
             <span className="text-[10px] font-bold tracking-widest uppercase text-amber-400">
-              LÍNEA PREMIUM
+              NOBLEZA & OFICIO
             </span>
             <span className="text-[10px] font-mono text-slate-400">
-              CONT. NETO 20L
+              BALDE 20L
             </span>
           </div>
 
@@ -138,7 +138,7 @@ export const PaintCan3D: React.FC = () => {
               Látex Acrílico Profesional
             </div>
             <div className="text-[10px] text-rose-300 font-medium">
-              Ultra Lavable · Máximo Poder Cubritivo
+              Ultra Lavable · Salta 258 Concordia
             </div>
           </div>
 
@@ -148,7 +148,7 @@ export const PaintCan3D: React.FC = () => {
               Pintureria Sarmiento
             </span>
             <span className="text-rose-400 font-bold">
-              Salta 258
+              Sucursal Salta
             </span>
           </div>
         </div>

@@ -307,7 +307,7 @@ export default function App() {
               
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-rose-400 shadow-inner">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Distribuidor Oficial {negocioData.distribuidor_oficial} · {negocioData.localidad}</span>
+                <span>Distribuidor Oficial {negocioData.distribuidor_oficial} · Trato cordial, oficio y palabra en Concordia</span>
               </div>
 
               <div className="space-y-2">
@@ -323,8 +323,8 @@ export default function App() {
               </div>
 
               <p className="text-sm sm:text-base lg:text-lg text-slate-300 max-w-2xl leading-relaxed">
-                Te damos la bienvenida a nuestra esquina tradicional de <strong>{negocioData.direccion.calle} {negocioData.direccion.numero}</strong>. 
-                Representamos la excelencia de <strong>{negocioData.distribuidor_oficial}</strong> con atención personalizada para obras, pintores y hogares, y <strong>servicio de entrega a domicilio</strong> en toda la ciudad de Concordia.
+                Te damos una cálida bienvenida a nuestra esquina tradicional de <strong>{negocioData.direccion.calle} {negocioData.direccion.numero}</strong>. 
+                Acá vas a encontrar toda la línea de <strong>{negocioData.distribuidor_oficial}</strong> con el asesoramiento franco y de oficio de quienes estamos todos los días detrás del mostrador. Sacamos cuentas con vos para que no gastes ni un peso de más y te lleves la cantidad justa. Y si andás con los tiempos apretados o no tenés en qué cargarlo, quedate tranquilo: <strong>te alcanzamos el pedido derecho a tu casa o al pie de la obra</strong> en cualquier rincón de Concordia.
               </p>
 
               {/* 3D Highlight Blocks */}
@@ -333,20 +333,20 @@ export default function App() {
                 <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-lg hover:border-rose-500/40 transition-all tilt-card-3d">
                   <div className="flex items-center gap-2 text-rose-400 font-bold text-xs mb-1">
                     <Truck className="w-4 h-4 text-rose-400 shrink-0" />
-                    <span>Entrega a Domicilio</span>
+                    <span>Te Lo Alcanzamos a Casa</span>
                   </div>
                   <p className="text-xs text-slate-300">
-                    Llevamos tu pedido a obra o domicilio en Concordia.
+                    Despreocupate del flete: te arrimamos los tachos y accesorios derecho a la puerta.
                   </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-lg hover:border-amber-500/40 transition-all tilt-card-3d">
                   <div className="flex items-center gap-2 text-amber-400 font-bold text-xs mb-1">
                     <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
-                    <span>{negocioData.direccion.calle} {negocioData.direccion.numero}</span>
+                    <span>{negocioData.direccion.calle} {negocioData.direccion.numero} (La Esquina)</span>
                   </div>
                   <p className="text-xs text-slate-300">
-                    Esquina de cómodo acceso para retiro y carga.
+                    Frenás el auto cómodo frente al local, cargás sin vueltas y seguís viaje.
                   </p>
                 </div>
 
@@ -369,14 +369,14 @@ export default function App() {
                   className="px-6 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-rose-600 via-rose-500 to-orange-500 hover:from-rose-500 hover:to-orange-400 text-white shadow-xl shadow-rose-950/40 flex items-center gap-2 transition-all transform active:scale-95"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>Llamar al Local: {negocioData.contacto.telefono_fijo}</span>
+                  <span>Llamar al Mostrador: {negocioData.contacto.telefono_fijo}</span>
                 </a>
 
                 <a
                   href="#local"
                   className="px-6 py-3.5 rounded-xl font-bold text-sm bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 flex items-center gap-2 transition-colors"
                 >
-                  <span>Ver Fachada & Ubicación</span>
+                  <span>Conocé la Esquina & Ubicación</span>
                   <ArrowRight className="w-4 h-4 text-slate-400" />
                 </a>
               </div>
@@ -403,7 +403,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* SECCIÓN INFORMACIÓN DEL NEGOCIO Y FACHADA (EL LOCAL) */}
+      {/* SECCIÓN INFORMACIÓN DEL NEGOCIO Y SALÓN DE VENTAS (EL LOCAL) */}
       <section id="local" className="relative z-10 py-20 bg-slate-900/40 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -412,10 +412,10 @@ export default function App() {
               Esquina {negocioData.direccion.calle} {negocioData.direccion.numero} · {negocioData.localidad}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
-              La Fachada del Negocio & Sucursal
+              Nuestra Tradicional Esquina & Salón de Ventas
             </h2>
             <p className="text-slate-400 text-sm mt-3 leading-relaxed">
-              Conocé las instalaciones de nuestro local comercial. Atendemos consultas técnicas, brindamos asesoramiento en colores y despachamos pedidos para particulares y profesionales.
+              Vení a conocer nuestro salón de ventas. Ya seas pintor de oficio, profesional de la obra buscando el tono exacto o una familia con ganas de dejar la casa impecable, acá te recibimos mano a mano, con unos buenos mates si pinta la charla y el consejo técnico que te hace ahorrar tiempo y plata.
             </p>
           </div>
 
@@ -436,12 +436,12 @@ export default function App() {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-white mb-0.5">Dirección Física</h3>
+                    <h3 className="text-sm font-bold text-white mb-0.5">Nuestra Ubicación</h3>
                     <p className="text-xs font-semibold text-slate-200">
                       {negocioData.direccion.calle} {negocioData.direccion.numero}, {negocioData.codigo_postal} {negocioData.direccion.ciudad}, {negocioData.direccion.provincia}
                     </p>
                     <p className="text-xs text-slate-400 mt-1">
-                      {negocioData.direccion.interseccion}. Esquina de fácil detención para carga vehicular.
+                      {negocioData.direccion.interseccion}. Esquina céntrica y bien ubicada para frenar, cargar y seguir viaje.
                     </p>
                     <a
                       href={negocioData.direccion.google_maps_url}
@@ -463,14 +463,14 @@ export default function App() {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-white mb-0.5">Teléfono Directo del Local</h3>
+                    <h3 className="text-sm font-bold text-white mb-0.5">Trato Directo y Sin Vueltas</h3>
                     <p className="text-sm font-bold text-emerald-400">
                       <a href={negocioData.contacto.telefono_click} className="hover:underline tabular-nums">
                         {negocioData.contacto.telefono_fijo}
                       </a>
                     </p>
                     <p className="text-xs text-slate-400 mt-1">
-                      Llamadas directas para consulta de stock, pedidos telefónicos y cotizaciones.
+                      Peganos un llamado o mandanos un WhatsApp. Te pasamos números al toque, te reservamos el material y te sacamos cualquier duda sobre la marcha.
                     </p>
                   </div>
                 </div>
@@ -483,7 +483,7 @@ export default function App() {
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-white mb-0.5">Horarios Comerciales</h3>
+                    <h3 className="text-sm font-bold text-white mb-0.5">Horarios de Atención</h3>
                     <p className="text-xs text-slate-300">
                       <strong>Lunes a Viernes:</strong> Mañana {negocioData.horarios.lunes_a_viernes.turno_manana}
                     </p>
@@ -504,12 +504,12 @@ export default function App() {
                     <Truck className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-white mb-0.5">Entrega a Domicilio</h3>
+                    <h3 className="text-sm font-bold text-white mb-0.5">Te Lo Acercamos a Casa</h3>
                     <p className="text-xs font-semibold text-rose-300">
                       Envíos en Concordia
                     </p>
                     <p className="text-xs text-slate-400 mt-1">
-                      Servicio de reparto ágil a domicilio o a pie de obra en cualquier barrio.
+                      ¿No tenés espacio en el coche o preferís no cargar peso? Despreocupate: te alcanzamos los tachos, pinceles y rodillos a tu domicilio o a la obra.
                     </p>
                   </div>
                 </div>
@@ -531,10 +531,10 @@ export default function App() {
               Líneas Oficiales en Sucursal Salta
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
-              Pinturas {negocioData.distribuidor_oficial} & Asesoramiento Técnico
+              Pinturas {negocioData.distribuidor_oficial}: Fórmulas Nobles que se Bancan el Clima Entrerriano
             </h2>
             <p className="text-slate-400 text-sm mt-3 leading-relaxed">
-              Gama completa de recubrimientos arquitectónicos de alta tecnología para el clima del litoral entrerriano.
+              Sabemos cómo castiga el sol en verano y la humedad brava del río Uruguay. Por eso trabajamos con productos nobles, con gran poder cubritivo y señorío, que visten las paredes y duran una barbaridad sin descascararse.
             </p>
           </div>
 
@@ -599,10 +599,10 @@ export default function App() {
                 Sistema Tintométrico Computarizado
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-white">
-                Preparamos más de 2.500 colores en el acto en Salta 258
+                ¿Buscás un color con personalidad? Te preparamos más de 2.500 tonos en el acto
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-                Traé tu muestra o elegí de la carta oficial Üxell. Nuestro equipo calibra la máquina con pigmentos originales para garantizar el tono exacto que buscas.
+                Traete una muestra, una foto o elegí de la carta oficial Üxell. Con nuestra máquina dosificadora digital le damos justo en la tecla al tono que tenés en la cabeza, para que tus ambientes luzcan con distinción.
               </p>
             </div>
 
@@ -622,7 +622,7 @@ export default function App() {
                 className="whitespace-nowrap px-6 py-3 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 flex items-center justify-center gap-2 transition-colors shadow-lg shadow-emerald-950/40"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Local</span>
+                <span>WhatsApp Mostrador</span>
               </a>
             </div>
           </div>
@@ -636,13 +636,13 @@ export default function App() {
           <div className="p-8 rounded-3xl bg-slate-900 border border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left items-center reveal-on-scroll">
             
             <div className="space-y-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-rose-500">Dirección</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-500">Nuestra Casa</span>
               <p className="text-lg font-bold text-white">{negocioData.direccion.calle} {negocioData.direccion.numero}</p>
-              <p className="text-xs text-slate-400">{negocioData.codigo_postal} {negocioData.localidad}</p>
+              <p className="text-xs text-slate-400">{negocioData.codigo_postal} {negocioData.localidad} · Esquina tradicional</p>
             </div>
 
             <div className="space-y-1 border-y md:border-y-0 md:border-x border-slate-800 py-4 md:py-0 md:px-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Horarios de Atención</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Horarios del Mostrador</span>
               <p className="text-xs text-slate-200">
                 <strong>Lunes a Viernes:</strong> Mañana {negocioData.horarios.lunes_a_viernes.turno_manana} · Tarde {negocioData.horarios.lunes_a_viernes.turno_tarde}
               </p>
@@ -652,13 +652,13 @@ export default function App() {
             </div>
 
             <div className="space-y-1 md:text-right">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Contacto</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Contacto Directo</span>
               <p className="text-lg font-bold text-white">
                 <a href={negocioData.contacto.telefono_click} className="hover:text-emerald-400 tabular-nums">
                   {negocioData.contacto.telefono_fijo}
                 </a>
               </p>
-              <p className="text-xs text-slate-400">Entrega a domicilio disponible en Concordia</p>
+              <p className="text-xs text-slate-400">Te lo alcanzamos a domicilio en cualquier rincón de Concordia</p>
             </div>
 
           </div>
@@ -681,11 +681,11 @@ export default function App() {
                   {negocioData.nombre}
                 </h4>
                 <p className="text-xs text-rose-400 font-semibold">
-                  {negocioData.sucursal} · Concordia, E.R.
+                  {negocioData.sucursal} · Concordia, Entre Ríos
                 </p>
               </div>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Distribuidor Oficial <strong>{negocioData.distribuidor_oficial}</strong>. Especialistas en pinturas látex, impermeabilizantes y esmaltes sintéticos.
+                Distribuidor Oficial <strong>{negocioData.distribuidor_oficial}</strong>. Especialistas en pinturas látex, impermeabilizantes y esmaltes con el oficio, la calidez y la palabra empeñada de siempre.
               </p>
             </div>
 
@@ -695,7 +695,7 @@ export default function App() {
               <p><strong>Dirección:</strong> {negocioData.direccion.calle} {negocioData.direccion.numero}</p>
               <p>{negocioData.codigo_postal} {negocioData.localidad}</p>
               <p><strong>Teléfono:</strong> <a href={negocioData.contacto.telefono_click} className="text-rose-400 hover:underline">{negocioData.contacto.telefono_fijo}</a></p>
-              <p className="text-emerald-400 font-medium pt-1">🚚 Entrega a domicilio disponible</p>
+              <p className="text-emerald-400 font-medium pt-1">🚚 Te lo alcanzamos a domicilio y a obra</p>
             </div>
 
             {/* Horarios */}
@@ -709,16 +709,16 @@ export default function App() {
 
             {/* Enlaces Directos */}
             <div className="space-y-2 text-xs">
-              <h4 className="font-bold text-white uppercase tracking-wider">Enlaces Directos</h4>
-              <p><a href={negocioData.contacto.telefono_click} className="text-slate-300 hover:text-white">→ Llamar: {negocioData.contacto.telefono_fijo}</a></p>
-              <p><a href={negocioData.contacto.whatsapp_url} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-emerald-400">→ WhatsApp Sucursal Salta</a></p>
-              <p><a href={negocioData.direccion.google_maps_url} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-blue-400">→ Ubicación en Google Maps</a></p>
+              <h4 className="font-bold text-white uppercase tracking-wider">Trato Directo</h4>
+              <p><a href={negocioData.contacto.telefono_click} className="text-slate-300 hover:text-white">→ Peganos un llamado: {negocioData.contacto.telefono_fijo}</a></p>
+              <p><a href={negocioData.contacto.whatsapp_url} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-emerald-400">→ Escribinos al WhatsApp</a></p>
+              <p><a href={negocioData.direccion.google_maps_url} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-blue-400">→ Cómo llegar con Google Maps</a></p>
             </div>
 
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-            <p>© 2026 {negocioData.nombre} {negocioData.sucursal}. {negocioData.localidad}.</p>
+            <p>© 2026 {negocioData.nombre} {negocioData.sucursal} · Concordia, Entre Ríos. Un negocio atendido con orgullo por gente de acá.</p>
             <p>Distribuidor Oficial {negocioData.distribuidor_oficial} Argentina.</p>
           </div>
         </div>

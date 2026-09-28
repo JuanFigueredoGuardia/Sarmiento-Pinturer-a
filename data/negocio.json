@@ -2,7 +2,7 @@
   "negocio": {
     "nombre": "Pintureria Sarmiento",
     "sucursal": "Sucursal Salta",
-    "slogan": "Expertos en Color",
+    "slogan": "Expertos en Color · Atendido por Gente de Acá",
     "distribuidor_oficial": "Üxell Pinturas",
     "localidad": "Concordia, Entre Ríos, Argentina",
     "codigo_postal": "E3202",
@@ -23,72 +23,72 @@
     },
     "horarios": {
       "lunes_a_viernes": {
-        "turno_manana": "Hasta las 12:00 p.m.",
-        "turno_tarde": "Vuelve a abrir a las 3:30 p.m. (hasta 19:30 hs)"
+        "turno_manana": "Por la mañana hasta las 12:00 p.m.",
+        "turno_tarde": "Volvemos a abrir a las 3:30 p.m. (hasta las 19:30 hs para pasar a la vuelta del laburo)"
       },
       "sabados": {
-        "turno": "08:00 a 12:30 hs"
+        "turno": "08:00 a 12:30 hs (atención corrida de sábado)"
       },
-      "domingos_y_feriados": "Cerrado"
+      "domingos_y_feriados": "Domingos cerrado para descansar en familia"
     },
     "servicios_del_local": [
       {
         "id": "entrega_domicilio",
-        "titulo": "Entrega a Domicilio",
-        "descripcion": "Reparto express de baldes, latas y materiales directo a tu obra o domicilio en toda la ciudad de Concordia."
+        "titulo": "Te Lo Alcanzamos a Domicilio",
+        "descripcion": "Despreocupate del flete: te llevamos los baldes, latas y materiales directo a la puerta de tu casa o al pie de la obra en toda Concordia."
       },
       {
         "id": "asesoramiento_tecnico",
-        "titulo": "Asesoramiento Técnico Profesional",
-        "descripcion": "Atención especializada para arquitectos, pintores, contratistas y particulares en la esquina de Salta 258."
+        "titulo": "Asesoramiento de Oficio, Mano a Mano",
+        "descripcion": "Atención personalizada para arquitectos, pintores de oficio y familias que quieren renovar su hogar, cuidando siempre el bolsillo y la calidad."
       },
       {
         "id": "sistema_tintometrico",
         "titulo": "Sistema Tintométrico Computarizado",
-        "descripcion": "Preparación exacta de más de 2.500 tonalidades Üxell en el acto con calibración digital."
+        "descripcion": "Preparamos más de 2.500 colores en el acto con calibración exacta y pigmentos originales Üxell para dar en la tecla con el tono que soñás."
       },
       {
         "id": "estacionamiento_carga",
-        "titulo": "Zona de Carga Ágil",
-        "descripcion": "Espacio de detención vehicular frente al local para carga pesada y rápida de mercadería."
+        "titulo": "Zona de Carga Cómoda en la Esquina",
+        "descripcion": "Espacio de detención frente a Salta 258 para que frenes el auto, cargues tranquilo los tachos pesados sin vueltas y sigas camino."
       }
     ],
     "lineas_uxell": [
       {
         "id": "latex_interior",
         "nombre": "Látex Interior Ultra Lavable",
-        "categoria": "Interiores",
-        "acabado": "Mate aterciopelado y satinado",
-        "rendimiento": "10 a 12 m² por litro por mano",
+        "categoria": "Interiores con Estilo",
+        "acabado": "Mate aterciopelado y satinado de gran categoría",
+        "rendimiento": "10 a 12 m² por litro por mano (rinde una barbaridad)",
         "envases": ["1L", "4L", "10L", "20L"],
-        "destacado": "Fórmula antihongo de larga duración, lavable con agua y excelente poder cubritivo."
+        "destacado": "Fórmula noble antihongo de altísimo poder cubritivo. Se limpia fácilmente con un trapo húmedo y deja la pared impecable."
       },
       {
         "id": "frentes_muros",
         "nombre": "Frentes y Muros Elastomérico",
-        "categoria": "Exteriores",
-        "acabado": "Mate protector impermeable",
+        "categoria": "Exteriores & Frentes",
+        "acabado": "Mate hidrorepelente que sella microfisuras",
         "rendimiento": "8 a 10 m² por litro por mano",
         "envases": ["4L", "10L", "20L"],
-        "destacado": "Protección contra rayos UV y lluvias torrenciales, sella microfisuras."
+        "destacado": "El auténtico poncho protector para la pared exterior: se banca el sol entrerriano del verano y las tormentas más bravas sin cuartearse jamás."
       },
       {
         "id": "membrana_fibrada",
         "nombre": "Membrana en Pasta Fibrada",
-        "categoria": "Impermeabilizantes",
-        "acabado": "Transitable elástico",
-        "rendimiento": "1.2 a 1.5 kg por m² trabajo final",
+        "categoria": "Impermeabilizantes de Techo",
+        "acabado": "Membrana elástica transitable",
+        "rendimiento": "1.2 a 1.5 kg por m² para trabajo definitivo",
         "envases": ["5kg", "10kg", "20kg"],
-        "destacado": "Con fibras incorporadas para techos y terrazas, máxima elasticidad."
+        "destacado": "Para dormir con total tranquilidad cuando llueve a cántaros. Fibras elásticas incorporadas que absorben la dilatación térmica de losas y chapas."
       },
       {
         "id": "esmaltes_maderas",
-        "nombre": "Esmalte 3 en 1 & Impregnantes",
-        "categoria": "Metales y Maderas",
-        "acabado": "Brillante, satinado y mate",
+        "nombre": "Esmalte 3 en 1 & Impregnantes Nobles",
+        "categoria": "Metales, Maderas & Herrería",
+        "acabado": "Brillante parejo, satinado y mate señorial",
         "rendimiento": "12 a 14 m² por litro por mano",
         "envases": ["0.5L", "1L", "4L"],
-        "destacado": "Antióxido, convertidor y esmalte para herrería. Impregnantes con filtro solar."
+        "destacado": "Antióxido, convertidor y esmalte de gran estampa para rejas y portones. Impregnantes con filtro solar que nutren la veta de la madera sin ampollarse."
       }
     ]
   }

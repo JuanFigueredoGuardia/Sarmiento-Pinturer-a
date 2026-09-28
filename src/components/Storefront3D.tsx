@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { MapPin, Phone, Clock, Navigation, ExternalLink, ShieldCheck } from 'lucide-react';
-import storefrontImg from '../assets/images/sarmiento_storefront_1790606374242.jpg';
+import storefrontImg from '../assets/images/esquina_sarmiento_salta_1790612871018.jpg';
 
 export const Storefront3D: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -52,14 +52,14 @@ export const Storefront3D: React.FC = () => {
         }}
       />
 
-      {/* Main Facade Visual Frame with 3D Depth */}
+      {/* Main Store Visual Frame with 3D Depth */}
       <div
         className="relative rounded-2xl overflow-hidden aspect-[16/10] bg-slate-950 border border-slate-700/60 shadow-inner group"
         style={{ transform: 'translateZ(20px)' }}
       >
         <img
           src={storefrontImg}
-          alt="Fachada real de Pintureria Sarmiento Sucursal Salta en Salta 258, Concordia"
+          alt="Foto real de Pintureria Sarmiento Sucursal Salta en la esquina de Salta 258, Concordia"
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
           referrerPolicy="no-referrer"
         />
@@ -85,7 +85,7 @@ export const Storefront3D: React.FC = () => {
         >
           <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/90 backdrop-blur-md border border-slate-700 text-xs font-bold text-emerald-400 shadow-lg">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Local Abierto al Público</span>
+            <span>Atención de Vecino a Vecino</span>
           </div>
         </div>
 
@@ -99,11 +99,11 @@ export const Storefront3D: React.FC = () => {
               Pintureria Sarmiento · Sucursal Salta
             </h3>
             <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider">
-              Esquina Emblemática
+              La Esquina del Color y la Confianza
             </span>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed">
-            Fachada comercial en la esquina de Salta 258. Amplio salón de venta con asesoramiento técnico personalizado, depósito con stock permanente de pinturas Üxell y fácil detención para carga de baldes y latas.
+            Nuestra esquina tradicional en Salta 258. Depósito bien surtido con toda la línea Üxell y lugar cómodo para detener el auto y cargar baldes sin apuros ni complicaciones.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-slate-800/80">
             <a
@@ -111,7 +111,7 @@ export const Storefront3D: React.FC = () => {
               className="text-emerald-400 font-bold hover:underline flex items-center gap-1"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>0345 520-0514</span>
+              <span>Peganos un llamado: 0345 520-0514</span>
             </a>
             <a
               href="https://maps.google.com/?q=Salta+258,+Concordia,+Entre+Rios"
@@ -120,7 +120,7 @@ export const Storefront3D: React.FC = () => {
               className="text-blue-400 font-bold hover:underline flex items-center gap-1"
             >
               <Navigation className="w-3.5 h-3.5" />
-              <span>Ver en Google Maps</span>
+              <span>Cómo llegar en Google Maps</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
