@@ -1,0 +1,91 @@
+/* Estilos y Efectos 3D y Scroll para Pintureria Sarmiento Sucursal Salta */
+
+:root {
+  --brand-navy: #090d16;
+  --brand-surface: #0f172a;
+  --brand-purple: #7e22ce;
+  --brand-magenta: #c026d3;
+  --brand-rose: #e11d48;
+  --brand-orange: #ea580c;
+  --brand-amber: #fbbf24;
+}
+
+/* Scroll suave en toda la página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Barra de progreso de scroll en el tope de la pantalla */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #7E22CE 0%, #C026D3 25%, #E11D48 50%, #EA580C 75%, #FBBF24 100%);
+  z-index: 100;
+  transition: width 0.1s ease-out;
+}
+
+/* Degradado de la marca Üxell */
+.paint-gradient {
+  background: linear-gradient(90deg, #7E22CE 0%, #C026D3 25%, #E11D48 50%, #EA580C 75%, #FBBF24 100%);
+}
+
+/* Efectos 3D y Perspectiva */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Animaciones de revelado por scroll (Scroll Reveal) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Efecto de inclinación 3D para tarjetas */
+.tilt-card-3d {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+  transform-style: preserve-3d;
+}
+
+.tilt-card-3d:hover {
+  box-shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.25);
+  border-color: rgba(225, 29, 72, 0.4);
+}
+
+/* Floating animation para elementos decorativos */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+/* Resplandor dinámico de fondo */
+.glow-spot {
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+}

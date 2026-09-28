@@ -1,0 +1,6 @@
+{
+  "name": "Pintureria Sarmiento Sucursal Salta",
+  "description": "Página web oficial de Pintureria Sarmiento Sucursal Salta (Concordia, Entre Ríos) - Distribuidor oficial Üxell Pinturas. Asesoramiento, entrega a domicilio y presupuestos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
