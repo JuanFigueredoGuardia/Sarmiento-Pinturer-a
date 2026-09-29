@@ -1,6 +1,7 @@
 import React from 'react';
-import { UxellLogo } from './UxellLogo';
-import { MapPin, Phone, Clock, Truck, ShieldCheck, Heart, Code2 } from 'lucide-react';
+import { SarmientoLogo } from './SarmientoLogo';
+import { MapPin, Phone, Clock, Truck, ShieldCheck, Heart, Code2, MessageCircle } from 'lucide-react';
+import { negocioData } from '../data/negocioData';
 
 interface FooterProps {
   onOpenCode: () => void;
@@ -17,20 +18,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCode, onOpenQuote }) => {
           
           {/* Col 1: Identity */}
           <div className="space-y-4">
-            <div className="bg-black/90 border border-slate-800 p-2.5 rounded-xl inline-block">
-              <UxellLogo className="h-9 w-auto" />
-            </div>
-            <div className="space-y-1">
-              <h4 className="text-white font-extrabold text-sm uppercase tracking-tight">
-                Pintureria Sarmiento
-              </h4>
-              <p className="text-xs text-rose-400 font-semibold">
-                Sucursal Salta · Concordia, E.R.
-              </p>
-            </div>
+            <SarmientoLogo className="h-10 w-auto" />
             <p className="text-xs leading-relaxed text-slate-400">
-              Distribuidor Oficial de <strong>Üxell Pinturas</strong>. Especialistas en pinturas látex para interior y exterior, membranas impermeabilizantes, esmaltes y colorimetría.
+              Especialistas en pinturas látex para interior y exterior, impermeabilizantes elastoméricos, membranas de techo, esmaltes y colorimetría computarizada. Tradición, oficio y atención personalizada en Concordia.
             </p>
+            <div className="flex items-center gap-2 text-xs text-rose-400 font-semibold">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>Calidad Garantizada · Atendido por Gente de Acá</span>
+            </div>
           </div>
 
           {/* Col 2: Dirección y Contacto */}
@@ -48,13 +43,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCode, onOpenQuote }) => {
               </div>
               <div className="flex items-center gap-2 text-slate-300 pt-1">
                 <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href="tel:03455200514" className="hover:text-white font-semibold tabular-nums">
-                  0345 520-0514
+                <a href={negocioData.contacto.telefono_click} className="hover:text-white font-semibold tabular-nums">
+                  {negocioData.contacto.telefono_fijo}
                 </a>
               </div>
               <div className="flex items-center gap-2 text-slate-300 pt-1">
                 <Truck className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Entrega a domicilio en Concordia</span>
+                <span>Entrega a domicilio en toda Concordia</span>
               </div>
             </div>
           </div>
@@ -68,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCode, onOpenQuote }) => {
               <div>
                 <p className="text-slate-300 font-semibold">Lunes a Viernes:</p>
                 <p className="text-slate-400">Mañana: hasta las 12:00 p.m.</p>
-                <p className="text-slate-400">Tarde: 3:30 p.m. a 19:30 p.m.</p>
+                <p className="text-slate-400">Tarde: 3:30 p.m. a 19:30 hs</p>
               </div>
               <div className="pt-1">
                 <p className="text-slate-300 font-semibold">Sábados:</p>
@@ -80,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCode, onOpenQuote }) => {
             </div>
           </div>
 
-          {/* Col 4: Acciones & Código */}
+          {/* Col 4: Acciones & Enlaces */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
               Atención & Enlaces
@@ -96,22 +91,23 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCode, onOpenQuote }) => {
               </li>
               <li>
                 <a
-                  href="https://wa.me/5493455200514"
+                  href={negocioData.contacto.whatsapp_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-slate-300 hover:text-emerald-400 transition-colors"
+                  className="text-slate-300 hover:text-emerald-400 transition-colors inline-flex items-center gap-1"
                 >
-                  → Contactar por WhatsApp (+54 9 345 520-0514)
+                  <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>WhatsApp (+54 9 345 520-0514)</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Salta+258,+Concordia,+Entre+Rios"
+                  href={negocioData.direccion.google_maps_url}
                   target="_blank"
                   rel="noreferrer"
                   className="text-slate-300 hover:text-blue-400 transition-colors"
                 >
-                  → Ver en Google Maps
+                  → Ver en Google Maps (Salta 258)
                 </a>
               </li>
               <li className="pt-2">
@@ -130,11 +126,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCode, onOpenQuote }) => {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© 2026 Pintureria Sarmiento Sucursal Salta. Todos los derechos reservados.</p>
-          <div className="flex items-center gap-4 text-xs">
-            <span>Concordia, Entre Ríos</span>
+          <p>© 2026 Pinturería Sarmiento Sucursal Salta. La marca que viste tus proyectos.</p>
+          <div className="flex items-center gap-4 text-xs text-slate-400">
+            <span>Salta 258 · Concordia, Entre Ríos</span>
             <span>·</span>
-            <span>Distribuidor Oficial Üxell Pinturas</span>
+            <span>Tel: 0345 520-0514</span>
           </div>
         </div>
 

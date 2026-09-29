@@ -3,7 +3,7 @@
     "nombre": "Pintureria Sarmiento",
     "sucursal": "Sucursal Salta",
     "slogan": "Expertos en Color · Atendido por Gente de Acá",
-    "distribuidor_oficial": "Üxell Pinturas",
+    "distribuidor_oficial": "Pinturería Sarmiento",
     "localidad": "Concordia, Entre Ríos, Argentina",
     "codigo_postal": "E3202",
     "direccion": {
@@ -45,7 +45,7 @@
       {
         "id": "sistema_tintometrico",
         "titulo": "Sistema Tintométrico Computarizado",
-        "descripcion": "Preparamos más de 2.500 colores en el acto con calibración exacta y pigmentos originales Üxell para dar en la tecla con el tono que soñás."
+        "descripcion": "Preparamos más de 2.500 colores en el acto con calibración exacta y pigmentos originales Pinturería Sarmiento para dar en la tecla con el tono que soñás."
       },
       {
         "id": "estacionamiento_carga",
@@ -53,7 +53,7 @@
         "descripcion": "Espacio de detención frente a Salta 258 para que frenes el auto, cargues tranquilo los tachos pesados sin vueltas y sigas camino."
       }
     ],
-    "lineas_uxell": [
+    "lineas_sarmiento": [
       {
         "id": "latex_interior",
         "nombre": "Látex Interior Ultra Lavable",

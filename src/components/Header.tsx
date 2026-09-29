@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { UxellLogo } from './UxellLogo';
-import { Phone, Menu, X, Code2, Sparkles } from 'lucide-react';
+import { SarmientoLogo } from './SarmientoLogo';
+import { Phone, Menu, X, Code2, Sparkles, MessageCircle } from 'lucide-react';
 
 interface HeaderProps {
   onOpenQuote: () => void;
@@ -15,39 +15,26 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenCode }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Zone 1: Brand Wordmark & Logo */}
-        <a href="#inicio" className="flex items-center gap-3.5 group focus:outline-none">
-          <div className="bg-black/80 border border-slate-800/90 px-2.5 py-1.5 rounded-xl shadow-md flex items-center group-hover:border-slate-700 transition-all">
-            <UxellLogo className="h-9 w-auto" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-extrabold tracking-tight text-white uppercase group-hover:text-rose-400 transition-colors">
-              Pintureria Sarmiento
-            </span>
-            <span className="text-xs font-semibold text-rose-400/90 tracking-wide">
-              Sucursal Salta · Concordia
-            </span>
-          </div>
+        <a href="#inicio" className="flex items-center group focus:outline-none">
+          <SarmientoLogo className="h-10 w-auto" />
         </a>
 
-        {/* Zone 2: 4-6 Clean Nav Links */}
+        {/* Zone 2: Navigation Links */}
         <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
           <a href="#inicio" className="hover:text-white transition-colors">
             Inicio
           </a>
-          <a href="#sucursal" className="hover:text-white transition-colors">
-            Sucursal Salta
+          <a href="#local" className="hover:text-white transition-colors">
+            El Local (Salta 258)
           </a>
           <a href="#productos" className="hover:text-white transition-colors">
-            Productos Üxell
+            Pinturas Sarmiento
           </a>
           <a href="#calculadora" className="hover:text-white transition-colors">
             Calculadora
           </a>
-          <a href="#colores" className="hover:text-white transition-colors">
-            Colores
-          </a>
-          <a href="#contacto" className="hover:text-white transition-colors">
-            Contacto
+          <a href="#horarios" className="hover:text-white transition-colors">
+            Horarios & Ubicación
           </a>
         </nav>
 
@@ -104,18 +91,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenCode }) => {
               Inicio
             </a>
             <a
-              href="#sucursal"
+              href="#local"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-white"
             >
-              Sucursal Salta (Salta 258)
+              El Local (Salta 258)
             </a>
             <a
               href="#productos"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-white"
             >
-              Productos Üxell
+              Pinturas Sarmiento
             </a>
             <a
               href="#calculadora"
@@ -125,21 +112,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenCode }) => {
               Calculadora de Litros
             </a>
             <a
-              href="#colores"
+              href="#horarios"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-white"
             >
-              Paleta de Colores
-            </a>
-            <a
-              href="#contacto"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-white"
-            >
-              Contacto & Horarios
+              Horarios & Ubicación
             </a>
           </nav>
-
           <div className="pt-2 border-t border-slate-800 space-y-2">
             <a
               href="tel:03455200514"
@@ -147,6 +126,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenCode }) => {
             >
               <Phone className="w-4 h-4 text-emerald-400" />
               Llamar al 0345 520-0514
+            </a>
+            <a
+              href="https://wa.me/5493455200514"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500"
+            >
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp Sucursal Salta
             </a>
           </div>
         </div>

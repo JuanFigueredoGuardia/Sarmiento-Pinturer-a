@@ -11,7 +11,7 @@ interface ProductYield {
 const PRODUCTS: ProductYield[] = [
   {
     id: 'latex-interior',
-    name: 'Látex Interior Üxell',
+    name: 'Látex Interior Sarmiento',
     yieldPerLitre: 11,
     description: 'Rendimiento estándar ~11 m²/litro por mano',
   },
@@ -95,7 +95,7 @@ export const PaintCalculator: React.FC = () => {
             Calculadora de Litros de Pintura
           </h2>
           <p className="text-slate-400 text-sm mt-2 leading-relaxed">
-            Ingresá los metros cuadrados de tus paredes o techos y calculá la cantidad exacta de pintura Üxell recomendada para no gastar de más.
+            Ingresá los metros cuadrados de tus paredes o techos y calculá la cantidad exacta de pintura Sarmiento recomendada para no gastar de más.
           </p>
         </div>
 
@@ -138,7 +138,7 @@ export const PaintCalculator: React.FC = () => {
                     onClick={() => handlePreset(90)}
                     className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-950 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white transition-colors"
                   >
-                    Techo / Fachada (~90 m²)
+                    Techo / Exterior (~90 m²)
                   </button>
                 </div>
               </div>
@@ -181,7 +181,7 @@ export const PaintCalculator: React.FC = () => {
               {/* Product Selection */}
               <div>
                 <label htmlFor={`${calcId}-product`} className="block text-xs font-bold text-slate-200 mb-2">
-                  Tipo de Pintura Üxell
+                  Tipo de Pintura Sarmiento
                 </label>
                 <select
                   id={`${calcId}-product`}
@@ -240,7 +240,7 @@ export const PaintCalculator: React.FC = () => {
                 
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[11px] font-semibold text-rose-400">
                   <Calculator className="w-3.5 h-3.5" />
-                  <span>Estimación de Consumo Üxell</span>
+                  <span>Estimación de Consumo Sarmiento</span>
                 </div>
 
                 <div>

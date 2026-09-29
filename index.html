@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pintureria Sarmiento Sucursal Salta | Üxell Pinturas Concordia</title>
-  <meta name="description" content="Local oficial de Pintureria Sarmiento Sucursal Salta (Salta 258, Concordia, Entre Ríos). Distribuidor oficial Üxell Pinturas. Atención, horarios y entrega a domicilio." />
-  <meta property="og:title" content="Pintureria Sarmiento Sucursal Salta | Üxell Pinturas Concordia" />
-  <meta property="og:description" content="Local oficial de Pintureria Sarmiento Sucursal Salta (Salta 258, Concordia, Entre Ríos). Distribuidor oficial Üxell Pinturas. Atención, horarios y entrega a domicilio." />
+  <title>Pintureria Sarmiento Sucursal Salta</title>
+  <meta name="description" content="Página web oficial de Pinturería Sarmiento Sucursal Salta (Concordia, Entre Ríos). Expertos en color, pinturas de alta gama, asesoramiento técnico y entrega a domicilio." />
+  <meta property="og:title" content="Pintureria Sarmiento Sucursal Salta" />
+  <meta property="og:description" content="Página web oficial de Pinturería Sarmiento Sucursal Salta (Concordia, Entre Ríos). Expertos en color, pinturas de alta gama, asesoramiento técnico y entrega a domicilio." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Tailwind CSS CDN para renderizado inmediato sin build -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,6 +18,15 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          keyframes: {
+            fadeInUpPronounced: {
+              '0%': { opacity: '0', transform: 'translateY(52px) scale(0.94)', filter: 'blur(4px)' },
+              '100%': { opacity: '1', transform: 'translateY(0) scale(1)', filter: 'blur(0)' }
+            }
+          },
+          animation: {
+            'fade-in-up-pronounced': 'fadeInUpPronounced 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards'
           }
         }
       }
@@ -29,12 +38,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Estilos con rutas relativas -->
-  <link rel="stylesheet" href="./css/style.css">
-
   <style>
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    .scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #f59e0b, #e11d48, #9333ea, #3b82f6);
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+    .paint-gradient {
+      background: linear-gradient(90deg, #f59e0b, #ea580c, #e11d48, #8b5cf6, #38bdf8);
+    }
+    .tilt-card-3d {
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .tilt-card-3d:hover {
+      transform: translateY(-4px);
     }
     .perspective-container {
       perspective: 1200px;
@@ -42,8 +66,86 @@
     .preserve-3d {
       transform-style: preserve-3d;
     }
-    .paint-gradient {
-      background: linear-gradient(90deg, #7E22CE 0%, #C026D3 25%, #E11D48 50%, #EA580C 75%, #FBBF24 100%);
+
+    /* Animación estándar de revelado */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animación Fade-In-Up Pronunciada para Tarjetas de Productos */
+    .fade-in-up-card {
+      opacity: 0;
+      transform: translateY(52px) scale(0.94);
+      filter: blur(4px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+      will-change: opacity, transform, filter;
+    }
+    .fade-in-up-card.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Animación Fade-In-Up Pronunciada para Pilares de Información del Local */
+    .fade-in-up-pillar {
+      opacity: 0;
+      transform: translateY(44px) scale(0.95);
+      filter: blur(3px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease;
+      will-change: opacity, transform, filter;
+    }
+    .fade-in-up-pillar.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Animación Fade-In-Up para elementos destacados */
+    .fade-in-up-pronounced {
+      opacity: 0;
+      transform: translateY(48px) scale(0.95);
+      filter: blur(4px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+    .fade-in-up-pronounced.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Retardos escalonados progresivos */
+    .stagger-1 { transition-delay: 100ms; }
+    .stagger-2 { transition-delay: 220ms; }
+    .stagger-3 { transition-delay: 340ms; }
+    .stagger-4 { transition-delay: 460ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in-up-card,
+      .fade-in-up-pillar,
+      .fade-in-up-pronounced,
+      .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -63,39 +165,33 @@
   <header id="mainHeader" class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logo Oficial Üxell Pinturas + Pintureria Sarmiento -->
-      <a href="#inicio" class="flex items-center gap-3.5 group focus:outline-none">
-        <div class="bg-black border border-slate-800 px-3 py-1.5 rounded-xl flex items-center shadow-lg group-hover:border-slate-700 transition-colors">
-          <svg class="h-9 w-auto" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Oficial Üxell Pinturas">
+      <!-- Logo Oficial Pinturería Sarmiento -->
+      <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+        <div class="flex items-center gap-3">
+          <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 shrink-0 shadow-lg rounded-xl" aria-label="Logo Oficial Pinturería Sarmiento">
             <defs>
-              <linearGradient id="headerWave" x1="0%" y1="50%" x2="100%" y2="50%">
-                <stop offset="0%" stopColor="#7E22CE" />
-                <stop offset="25%" stopColor="#C026D3" />
-                <stop offset="50%" stopColor="#E11D48" />
-                <stop offset="75%" stopColor="#EA580C" />
-                <stop offset="100%" stopColor="#FBBF24" />
+              <linearGradient id="sarmientoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F59E0B" />
+                <stop offset="35%" stop-color="#EA580C" />
+                <stop offset="70%" stop-color="#E11D48" />
+                <stop offset="100%" stop-color="#8B5CF6" />
               </linearGradient>
             </defs>
-            <g fill="#FFFFFF">
-              <circle cx="53" cy="22" r="6.5" />
-              <circle cx="75" cy="22" r="6.5" />
-              <path d="M43 35 H55 V57 C55 62 58 65 64 65 C70 65 73 62 73 57 V35 H85 V57 C85 68 77 75 64 75 C51 75 43 68 43 57 Z" />
-              <path d="M93 42 H106 L118 57 L130 42 H143 L126 62 L144 82 H131 L118 66 L105 82 H92 L110 62 Z" />
-              <path d="M150 61 C150 49 159 41 172 41 C184 41 192 49 192 61 V64 H162 C163 70 167 74 174 74 C180 74 184 71 187 68 L193 74 C188 80 181 83 173 83 C159 83 150 74 150 61 Z M181 57 C181 52 177 48 171 48 C166 48 162 52 162 57 Z" />
-              <rect x="200" y="35" width="12" height="47" rx="1.5" />
-              <rect x="219" y="35" width="12" height="47" rx="1.5" />
-            </g>
-            <text x="137" y="96" text-anchor="middle" class="font-semibold text-[11px] fill-slate-300" letter-spacing="0.4em">PINTURAS</text>
-            <path d="M34 104 C70 98, 120 97, 160 102 C200 107, 240 114, 286 111 C260 117, 210 116, 170 111 C130 106, 80 105, 34 104 Z" fill="url(#headerWave)" />
+            <rect x="4" y="4" width="64" height="64" rx="16" fill="#090D16" stroke="#334155" stroke-width="2" />
+            <path d="M48 20 C42 16, 26 16, 22 26 C19 33, 26 38, 36 40 C48 42, 53 47, 50 54 C46 62, 30 63, 22 56" stroke="url(#sarmientoGrad1)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="24" cy="23" r="3.5" fill="#FBBF24" />
+            <circle cx="48" cy="53" r="3.5" fill="#38BDF8" />
+            <path d="M46 16 L53 10 C54 9, 56 10, 56 11 L53 18 Z" fill="url(#sarmientoGrad1)" />
           </svg>
-        </div>
-        <div class="hidden sm:block">
-          <span class="text-sm font-extrabold tracking-tight text-white block uppercase group-hover:text-rose-400 transition-colors">
-            Pintureria Sarmiento
-          </span>
-          <span class="text-xs text-rose-400 font-semibold block">
-            Sucursal Salta · Concordia
-          </span>
+          <div>
+            <span class="text-[10px] font-bold text-rose-400 block tracking-[0.25em] uppercase">Pinturería</span>
+            <span class="text-base sm:text-lg font-extrabold tracking-tight text-white block uppercase group-hover:text-rose-400 transition-colors leading-none">
+              Sarmiento
+            </span>
+            <span class="text-[10px] text-slate-400 font-medium block">
+              Sucursal Salta · Concordia
+            </span>
+          </div>
         </div>
       </a>
 
@@ -103,83 +199,98 @@
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
         <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
         <a href="#local" class="hover:text-white transition-colors">El Local (Salta 258)</a>
-        <a href="#productos" class="hover:text-white transition-colors">Pinturas Üxell</a>
+        <a href="#productos" class="hover:text-white transition-colors">Pinturas Sarmiento</a>
+        <a href="#calculadora" class="hover:text-white transition-colors">Calculadora</a>
         <a href="#horarios" class="hover:text-white transition-colors">Horarios & Ubicación</a>
       </nav>
 
       <!-- Botones de Contacto Directo -->
       <div class="flex items-center gap-3">
-        <a href="tel:03455200514" class="inline-flex items-center gap-2 text-xs font-bold text-slate-200 hover:text-white py-2 px-3.5 rounded-xl border border-slate-800 hover:bg-slate-900 transition-all shadow-sm" title="Llamanos al local">
-          <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <a href="tel:03455200514" class="hidden sm:inline-flex items-center gap-2 text-xs font-bold text-slate-200 hover:text-white py-2 px-3 rounded-xl border border-slate-800 hover:bg-slate-900 transition-all shadow-sm">
+          <span class="text-emerald-400">📞</span>
           <span class="tabular-nums">0345 520-0514</span>
         </a>
-        <a href="https://wa.me/5493455200514?text=Hola%20Pintureria%20Sarmiento%20Sucursal%20Salta,%20deseo%20hacer%20una%20consulta" target="_blank" class="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl shadow-lg shadow-emerald-950/40 transition-all transform active:scale-95">
-          Escribinos al WhatsApp
+        <a href="https://wa.me/5493455200514?text=Hola%20Pintureria%20Sarmiento%20Sucursal%20Salta,%20necesito%20un%20presupuesto" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white shadow-lg shadow-emerald-950/50 transition-all transform active:scale-95">
+          <span>💬 Pedir Presupuesto</span>
         </a>
-        
-        <!-- Botón menú móvil -->
-        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900" aria-label="Abrir menú">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-white bg-slate-900 border border-slate-800" aria-label="Abrir menú">
+          ☰
         </button>
       </div>
-
     </div>
 
     <!-- Menú Desplegable Móvil -->
-    <div id="mobileMenu" class="hidden md:hidden px-4 pt-3 pb-6 border-t border-slate-800 bg-slate-950 space-y-3">
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-slate-950/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3">
       <nav class="flex flex-col space-y-2 text-sm font-medium text-slate-300">
         <a href="#inicio" class="mobile-link px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-white">Inicio</a>
         <a href="#local" class="mobile-link px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-white">El Local (Salta 258)</a>
-        <a href="#productos" class="mobile-link px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-white">Pinturas Üxell</a>
+        <a href="#productos" class="mobile-link px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-white">Pinturas Sarmiento</a>
+        <a href="#calculadora" class="mobile-link px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-white">Calculadora de Litros</a>
         <a href="#horarios" class="mobile-link px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-white">Horarios & Ubicación</a>
       </nav>
-      <div class="pt-2 border-t border-slate-800 space-y-2">
+      <div class="pt-2 border-t border-slate-800">
         <a href="tel:03455200514" class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-slate-900 border border-slate-800">
-          📞 Peganos un llamado al mostrador: 0345 520-0514
+          📞 Llamar al 0345 520-0514
         </a>
       </div>
     </div>
   </header>
 
-  <!-- SECCIÓN HERO 3D (PRINCIPAL) -->
-  <section id="inicio" class="relative z-10 pt-10 pb-20 lg:py-24 border-b border-slate-800/80 overflow-hidden">
+  <!-- SECCIÓN HERO (PRINCIPAL) CON EL LOCAL REAL SIN ALTERAR -->
+  <section id="inicio" class="relative z-10 pt-8 pb-16 lg:py-20 border-b border-slate-800/80 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         
-        <!-- Presentación del Negocio -->
-        <div class="lg:col-span-7 space-y-6">
+        <!-- Left: Datos del Negocio y Propuesta de Valor -->
+        <div class="lg:col-span-7 space-y-6 reveal-on-scroll is-visible">
+          
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-rose-400 shadow-inner">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Distribuidor Oficial Üxell Pinturas · Trato cordial, oficio y palabra en Concordia</span>
+            <span>Pinturería Sarmiento · Trato cordial, oficio y palabra en Concordia</span>
           </div>
 
           <div class="space-y-2">
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] [text-wrap:balance]">
-              Pintureria Sarmiento <span class="block text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-orange-400 to-amber-300">Sucursal Salta</span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+              Pinturería Sarmiento
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-orange-400 to-amber-300">
+                Sucursal Salta
+              </span>
             </h1>
             <p class="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-200 tracking-tight">
-              Expertos en Color · Atendido por Gente de Acá, Mano a Mano
+              Expertos en Color · Atendido por Gente de Acá
             </p>
           </div>
 
           <p class="text-sm sm:text-base lg:text-lg text-slate-300 max-w-2xl leading-relaxed">
             Te damos una cálida bienvenida a nuestra esquina tradicional de <strong>Salta 258</strong>. 
-            Acá vas a encontrar la línea completa de <strong>Üxell Pinturas</strong> con el asesoramiento franco y de oficio de quienes estamos todos los días detrás del mostrador. Sacamos cuentas con vos para que no gastes ni un peso de más y te lleves la cantidad justa. Y si andás con los tiempos apretados o no tenés en qué cargarlo, quedate tranquilo: <strong>te alcanzamos el pedido derecho a tu casa o al pie de la obra</strong> en cualquier rincón de Concordia.
+            Acá vas a encontrar toda la línea de <strong>Pinturería Sarmiento</strong> con el asesoramiento franco y de oficio de quienes estamos todos los días detrás del mostrador. Sacamos cuentas con vos para que no gastes ni un peso de más y te lleves la cantidad justa. Y si andás con los tiempos apretados o no tenés en qué cargarlo, quedate tranquilo: <strong>te alcanzamos el pedido derecho a tu casa o al pie de la obra</strong> en cualquier rincón de Concordia.
           </p>
 
-          <!-- Tarjetas Destacadas 3D -->
+          <!-- 3 Tarjetas de Confianza -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
             <div class="p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-lg hover:border-rose-500/40 transition-all tilt-card-3d">
-              <span class="text-xs text-rose-400 font-bold block mb-1">🚚 TE LO ALCANZAMOS A CASA</span>
-              <span class="text-xs text-slate-300">Despreocupate del flete: te arrimamos los tachos y accesorios derecho a la puerta</span>
+              <div class="flex items-center gap-2 text-rose-400 font-bold text-xs mb-1">
+                <span>🚚</span>
+                <span>Te Lo Alcanzamos a Casa</span>
+              </div>
+              <p class="text-xs text-slate-300">
+                Despreocupate del flete: te arrimamos los tachos y accesorios directo a la puerta.
+              </p>
             </div>
+
             <div class="p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-lg hover:border-amber-500/40 transition-all tilt-card-3d">
-              <span class="text-xs text-amber-400 font-bold block mb-1">📍 SALTA 258 (LA ESQUINA)</span>
-              <span class="text-xs text-slate-300">Frenás el auto cómodo frente al local, cargás sin vueltas y seguís viaje</span>
+              <div class="flex items-center gap-2 text-amber-400 font-bold text-xs mb-1">
+                <span>📍</span>
+                <span>Salta 258 (La Esquina)</span>
+              </div>
+              <p class="text-xs text-slate-300">
+                Frenás el auto cómodo frente al local, cargás sin vueltas y seguís viaje.
+              </p>
             </div>
+
             <div class="p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-lg hover:border-emerald-500/40 transition-all tilt-card-3d">
-              <span id="liveStatusBadge" class="text-xs text-emerald-400 font-bold block mb-1">⏰ ATENCIÓN DE PRIMERA</span>
-              <span id="liveStatusDetail" class="text-xs text-slate-300">Te recibimos con la mejor predisposición y una sonrisa cordial</span>
+              <span id="liveStatusBadge" class="text-xs text-emerald-400 font-bold block mb-1">⏰ ABIERTO HOY</span>
+              <span id="liveStatusDetail" class="text-xs text-slate-300">Atención cordial de mañana y tarde</span>
             </div>
           </div>
 
@@ -194,60 +305,51 @@
           </div>
         </div>
 
-        <!-- LATA DE PINTURA 3D INTERACTIVA -->
-        <div class="lg:col-span-5 flex flex-col items-center justify-center">
-          <div class="text-center mb-2">
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
-              ✨ Mové el cursor para girar la lata 3D
-            </span>
-          </div>
-
-          <div id="can3dContainer" class="relative w-full max-w-[340px] h-[370px] flex items-center justify-center perspective-container select-none">
-            <!-- Sombra de suelo 3D -->
-            <div id="canShadow" class="absolute bottom-6 w-56 h-12 bg-black/70 rounded-full blur-xl pointer-events-none transition-transform duration-100"></div>
-
-            <!-- Contenedor 3D de la lata -->
-            <div id="can3dBody" class="relative w-52 h-72 preserve-3d transition-transform duration-75 ease-out">
+        <!-- Right: FOTO REAL DEL LOCAL (SIN ALTERAR - PINTURERÍA SARMIENTO) -->
+        <div class="lg:col-span-5 reveal-on-scroll">
+          <div class="relative rounded-3xl p-3 bg-gradient-to-b from-slate-800/90 to-slate-900 border border-slate-700/80 shadow-2xl group">
+            
+            <div class="relative aspect-[16/9] sm:aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 shadow-inner">
+              <img 
+                src="./foto_local.jpg" 
+                alt="Foto real de Pinturería Sarmiento Sucursal Salta en Salta 258, Concordia, Entre Ríos" 
+                class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" 
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/10 pointer-events-none"></div>
               
-              <!-- Tapa / Borde Cromado Superior -->
-              <div class="absolute -top-3 left-0 right-0 h-10 rounded-full border-2 border-slate-300 shadow-md" style="transform: translateZ(10px) rotateX(90deg); background: radial-gradient(ellipse at center, #f1f5f9 0%, #cbd5e1 50%, #64748b 100%);">
-                <div class="absolute inset-1.5 rounded-full" style="background: radial-gradient(circle, #e11d48 0%, #be123c 60%, #881337 100%);"></div>
+              <!-- Badge: Local Oficial -->
+              <div class="absolute top-3.5 left-3.5 z-10">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/90 backdrop-blur-md text-white border border-slate-700 text-xs font-bold shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Local Oficial · Salta 258
+                </span>
               </div>
 
-              <!-- Manija metálica -->
-              <div class="absolute -top-6 -left-3 -right-3 h-28 rounded-t-full border-[3px] border-slate-400/80 pointer-events-none" style="transform: translateZ(25px) rotateX(-20deg);"></div>
-
-              <!-- Cuerpo Principal de la Lata con Branding Üxell -->
-              <div class="absolute inset-0 rounded-2xl overflow-hidden border border-slate-700/80 flex flex-col justify-between p-5 text-white shadow-2xl" style="transform: translateZ(15px); background: linear-gradient(135deg, #090d16 0%, #0f172a 40%, #1e1b4b 100%);">
-                <!-- Reflejo especular metálico -->
-                <div id="canReflection" class="absolute inset-0 pointer-events-none opacity-40" style="background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.4) 45%, transparent 60%);"></div>
-
-                <div class="relative z-10 flex items-center justify-between border-b border-slate-700/60 pb-2">
-                  <span class="text-[10px] font-bold tracking-widest uppercase text-amber-400">NOBLEZA & OFICIO</span>
-                  <span class="text-[10px] font-mono text-slate-400">BALDE 20L</span>
-                </div>
-
-                <div class="relative z-10 my-auto text-center py-2">
-                  <div class="text-3xl font-extrabold tracking-tight text-white">Üxell</div>
-                  <div class="text-[9px] font-semibold tracking-[0.3em] text-slate-300">PINTURAS</div>
-                  <div class="h-1 w-24 mx-auto my-2 paint-gradient rounded-full"></div>
-                  <div class="text-xs font-bold text-slate-100 uppercase tracking-wide mt-1">Látex Acrílico</div>
-                  <div class="text-[10px] text-rose-300">Ultra Lavable · Salta 258</div>
-                </div>
-
-                <div class="relative z-10 pt-2 border-t border-slate-700/60 flex items-center justify-between text-[10px]">
-                  <span class="font-extrabold text-white uppercase tracking-tight">Sarmiento</span>
-                  <span class="text-rose-400 font-bold">Sucursal Salta</span>
-                </div>
+              <div class="absolute top-3.5 right-3.5 z-10">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-600/90 backdrop-blur-md text-white text-xs font-bold shadow-lg">
+                  ✨ Local Exclusivo
+                </span>
               </div>
 
-              <!-- Base inferior cromada -->
-              <div class="absolute -bottom-2 left-1 right-1 h-6 rounded-b-xl border-t border-slate-600" style="transform: translateZ(5px); background: linear-gradient(to bottom, #475569 0%, #1e293b 100%);"></div>
+              <!-- Pie de la foto -->
+              <div class="absolute bottom-3 left-3 right-3 z-10 bg-slate-950/95 backdrop-blur-md border border-slate-800 rounded-xl p-3.5 shadow-xl flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-extrabold text-white tracking-wide uppercase">Pinturería Sarmiento</div>
+                  <div class="text-[11px] text-slate-300">Sucursal Salta · Concordia, E.R.</div>
+                </div>
+                <a href="https://maps.google.com/?q=Salta+258,+Concordia,+Entre+Rios" target="_blank" class="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition-colors shadow-md flex items-center gap-1">
+                  <span>Cómo llegar</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div class="text-center mt-2 text-xs font-semibold text-slate-400">
-            Distribuidor Oficial Üxell · Stock permanente en Salta 258
+            <!-- Banda informativa al pie -->
+            <div class="mt-2.5 px-3 py-2 rounded-xl bg-slate-950/60 border border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+              <span class="text-slate-300 font-medium">📍 Salta 258 casi esquina Carriego / Urquiza</span>
+              <span class="text-emerald-400 font-bold">Atención de Vecino a Vecino</span>
+            </div>
+
           </div>
         </div>
 
@@ -255,7 +357,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN EL LOCAL & NUESTRA ESQUINA (SALTA 258) -->
+  <!-- SECCIÓN EL LOCAL & NUESTRA ESQUINA (SALTA 258) - SIN FOTO ARTIFICIAL -->
   <section id="local" class="relative z-10 py-20 bg-slate-900/40 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -271,52 +373,80 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Tarjeta 3D Tilt de la Esquina -->
+        <!-- Centro de Experiencia del Local (Salta 258) -->
         <div class="lg:col-span-7 reveal-on-scroll">
-          <div id="storeCard" class="relative rounded-3xl p-3 bg-gradient-to-b from-slate-800/80 to-slate-900/90 border border-slate-700/80 shadow-2xl transition-all duration-150 ease-out perspective-container">
-            <div id="storeGlare" class="absolute inset-0 rounded-3xl pointer-events-none transition-opacity duration-200 z-30 opacity-0"></div>
-
-            <div class="relative rounded-2xl overflow-hidden aspect-[16/10] bg-slate-950 border border-slate-700/60 shadow-inner group" style="transform: translateZ(20px);">
-              <!-- Foto Real del Negocio en la Esquina -->
-              <img src="./esquina_sarmiento_salta.jpg" alt="Foto real de Pintureria Sarmiento Sucursal Salta en la esquina de Salta 258" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none"></div>
-
-              <!-- Etiquetas Flotantes 3D -->
-              <div class="absolute top-4 left-4 z-20" style="transform: translateZ(35px);">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/90 backdrop-blur-md border border-slate-700 text-xs font-bold text-white shadow-lg">
-                  📍 Salta 258 · Concordia
+          <div class="relative rounded-3xl p-6 bg-gradient-to-b from-slate-800/90 to-slate-900 border border-slate-700/80 shadow-2xl space-y-6">
+            
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center text-white text-xl shadow-lg shadow-rose-950/40">
+                  📍
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-lg font-extrabold text-white tracking-tight uppercase">
+                      Pinturería Sarmiento
+                    </h3>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">
+                      Sucursal Salta
+                    </span>
+                  </div>
+                  <p class="text-xs text-slate-300 font-medium">
+                    Salta 258 · Salta esq. Carriego / Urquiza
+                  </p>
                 </div>
               </div>
 
-              <div class="absolute top-4 right-4 z-20" style="transform: translateZ(35px);">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/90 backdrop-blur-md border border-slate-700 text-xs font-bold text-emerald-400 shadow-lg">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  Abierto con Atención de Vecino a Vecino
-                </div>
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-950/80 border border-emerald-500/40 text-xs font-bold text-emerald-400">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Atención Personalizada</span>
               </div>
+            </div>
 
-              <!-- Datos de la Esquina en el pie -->
-              <div class="absolute bottom-4 left-4 right-4 z-20 p-4 rounded-xl bg-slate-950/95 backdrop-blur-md border border-slate-800 shadow-xl space-y-2" style="transform: translateZ(30px);">
-                <div class="flex items-center justify-between">
-                  <h3 class="text-base font-extrabold text-white uppercase tracking-tight">Pintureria Sarmiento · Sucursal Salta</h3>
-                  <span class="text-[11px] font-bold text-rose-400 uppercase">La Esquina del Color y la Confianza</span>
+            <div class="p-4 rounded-2xl bg-slate-950/90 border border-slate-800 space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-200">✨ Salón de Ventas & Mostrador Técnico</span>
+                <span class="text-[11px] font-mono text-slate-400">Concordia, Entre Ríos</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Nuestra esquina en Salta 258 está equipada para brindarte una atención rápida y resolutiva. 
+                Contamos con depósito amplio y completo de pinturas látex, impermeabilizantes, esmaltes y accesorios, 
+                máquina dosificadora computarizada para dar con cualquier color en minutos, y espacio de detención para 
+                cargar latas y baldes pesados sin apuros.
+              </p>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+                <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs fade-in-up-pronounced stagger-1">
+                  <div class="text-rose-400 font-bold mb-1">✔ Salón & Mostrador</div>
+                  <p class="text-[11px] text-slate-400">Atención franca, mates y el mejor consejo de oficio.</p>
                 </div>
-                <p class="text-xs text-slate-300">
-                  Nuestra esquina tradicional en Salta 258. Depósito bien surtido con toda la línea Üxell y lugar cómodo para detener el auto y cargar baldes sin apuros ni complicaciones.
-                </p>
-                <div class="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-slate-800/80">
-                  <a href="tel:03455200514" class="text-emerald-400 font-bold hover:underline">📞 0345 520-0514</a>
-                  <a href="https://maps.google.com/?q=Salta+258,+Concordia,+Entre+Rios" target="_blank" class="text-blue-400 font-bold hover:underline">📍 Cómo llegar con Google Maps →</a>
+                <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs fade-in-up-pronounced stagger-2">
+                  <div class="text-amber-400 font-bold mb-1">✔ Zona de Carga</div>
+                  <p class="text-[11px] text-slate-400">Parás sobre Salta 258, cargás los tachos y seguís viaje.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs fade-in-up-pronounced stagger-3">
+                  <div class="text-blue-400 font-bold mb-1">✔ Envío a Domicilio</div>
+                  <p class="text-[11px] text-slate-400">Te lo alcanzamos a la puerta de casa o al pie de obra.</p>
                 </div>
               </div>
             </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2 text-xs">
+              <a href="https://maps.google.com/?q=Salta+258,+Concordia,+Entre+Rios" target="_blank" class="flex-1 min-w-[200px] py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-center flex items-center justify-center gap-2 shadow-md transition-all">
+                <span>📍 Cómo Llegar en Google Maps →</span>
+              </a>
+              <a href="https://wa.me/5493455200514?text=Hola%20Pintureria%20Sarmiento%20Sucursal%20Salta,%20deseo%20hacer%20una%20consulta" target="_blank" class="flex-1 min-w-[200px] py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-center flex items-center justify-center gap-2 shadow-md transition-all">
+                <span>💬 Escribinos al WhatsApp →</span>
+              </a>
+            </div>
+
           </div>
         </div>
 
         <!-- 4 Pilares del Local -->
-        <div class="lg:col-span-5 space-y-4 reveal-on-scroll">
+        <div class="lg:col-span-5 space-y-4">
           
-          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all shadow-md tilt-card-3d">
+          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all shadow-md tilt-card-3d fade-in-up-pillar stagger-1">
             <h3 class="text-sm font-bold text-white mb-0.5">📍 Nuestra Ubicación</h3>
             <p class="text-xs font-semibold text-slate-200">Salta 258, E3202 Concordia, Entre Ríos</p>
             <p class="text-xs text-slate-400 mt-1">Salta casi esquina Carriego / Urquiza. Esquina céntrica y bien ubicada para frenar, cargar y seguir viaje.</p>
@@ -325,133 +455,131 @@
             </a>
           </div>
 
-          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all shadow-md tilt-card-3d">
+          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all shadow-md tilt-card-3d fade-in-up-pillar stagger-2">
             <h3 class="text-sm font-bold text-white mb-0.5">📞 Trato Directo y Sin Vueltas</h3>
-            <p class="text-sm font-bold text-emerald-400">
-              <a href="tel:03455200514" class="hover:underline tabular-nums">0345 520-0514</a>
-            </p>
-            <p class="text-xs text-slate-400 mt-1">Peganos un llamado o mandanos un WhatsApp. Te pasamos números al toque, te reservamos el material y te sacamos cualquier duda sobre la marcha.</p>
+            <p class="text-sm font-bold text-emerald-400">0345 520-0514</p>
+            <p class="text-xs text-slate-400 mt-1">Te atiende una persona del mostrador, no un contestador. Sacate las dudas de rendimiento, litros y colores.</p>
+            <a href="tel:03455200514" class="text-xs font-bold text-emerald-400 hover:underline mt-2 inline-block">
+              Llamar al local por teléfono →
+            </a>
           </div>
 
-          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all shadow-md tilt-card-3d">
+          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all shadow-md tilt-card-3d fade-in-up-pillar stagger-3">
             <h3 class="text-sm font-bold text-white mb-0.5">⏰ Horarios de Atención</h3>
-            <p class="text-xs text-slate-300"><strong>Lunes a Viernes:</strong> Por la mañana hasta las <strong>12:00 p.m.</strong></p>
-            <p class="text-xs text-slate-300 mt-0.5"><strong>Tarde:</strong> Volvemos a abrir a las <strong>3:30 p.m.</strong> (hasta las 19:30 hs para que pases a la salida del laburo)</p>
-            <p class="text-[11px] text-amber-400 mt-1 font-semibold">Sábados: de 08:00 a 12:30 hs para planificar el fin de semana</p>
+            <p class="text-xs text-slate-200"><strong>Lunes a Viernes:</strong> Mañana hasta las 12:00 | Tarde 3:30 p.m. a 19:30 hs</p>
+            <p class="text-xs text-slate-200 mt-0.5"><strong>Sábados:</strong> 08:00 a 12:30 hs (atención corrida)</p>
+            <p class="text-[11px] text-slate-400 mt-1">Domingos cerrado para descansar en familia.</p>
           </div>
 
-          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-rose-500/40 transition-all shadow-md tilt-card-3d">
-            <h3 class="text-sm font-bold text-white mb-0.5">🚚 Te Lo Acercamos a Casa</h3>
-            <p class="text-xs font-semibold text-rose-300">Envíos en Concordia</p>
-            <p class="text-xs text-slate-400 mt-1">¿No tenés espacio en el coche o preferís no cargar peso? Despreocupate: te alcanzamos los tachos, pinceles y rodillos a tu domicilio o a la obra.</p>
+          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all shadow-md tilt-card-3d fade-in-up-pillar stagger-4">
+            <h3 class="text-sm font-bold text-white mb-0.5">🚚 Te Lo Alcanzamos al Pie de la Obra</h3>
+            <p class="text-xs text-slate-300">
+              Despreocupate del flete: te alcanzamos los baldes, latas y materiales directo a tu casa o a la obra en cualquier punto de Concordia.
+            </p>
           </div>
 
         </div>
 
       </div>
-
     </div>
   </section>
 
-  <!-- SECCIÓN PRODUCTOS Y SERVICIOS ÜXELL -->
+  <!-- SECCIÓN PRODUCTOS & LATA 3D INTERACTIVA PINTURERÍA SARMIENTO -->
   <section id="productos" class="relative z-10 py-20 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-14 reveal-on-scroll">
         <span class="text-xs font-bold tracking-widest uppercase text-rose-500">Líneas Oficiales en Sucursal Salta</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
-          Pinturas Üxell: Fórmulas Nobles que se Bancan el Clima Entrerriano
+          Pinturas Sarmiento: Fórmulas Nobles que se Bancan el Clima Entrerriano
         </h2>
         <p class="text-slate-400 text-sm mt-3 leading-relaxed">
           Sabemos cómo castiga el sol en verano y la humedad brava del río Uruguay. Por eso trabajamos con productos nobles, con gran poder cubritivo y señorío, que visten las paredes y duran una barbaridad sin descascararse.
         </p>
       </div>
 
+      <!-- 4 Tarjetas de Productos -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <!-- Látex Interiores -->
-        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-purple-500/60 hover:-translate-y-2 transition-all duration-300 shadow-xl flex flex-col justify-between tilt-card-3d reveal-on-scroll">
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-purple-500/60 hover:-translate-y-2 transition-all duration-300 shadow-xl flex flex-col justify-between tilt-card-3d fade-in-up-card stagger-1">
           <div>
             <span class="text-[11px] font-bold text-purple-400 uppercase tracking-wider block mb-2">Interiores con Estilo</span>
-            <h3 class="text-lg font-bold text-white mb-2">Látex Ultra Lavable</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Látex Interior Sarmiento Ultra Lavable</h3>
             <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Para el living, las piezas y el comedor. Deja una terminación mate aterciopelada de gran categoría. Se limpia fácilmente con un trapo húmedo y contiene aditivos antihongo para mantener los ambientes impecables y sanos.
+              Fórmula noble antihongo de altísimo poder cubritivo. Se limpia fácilmente con un trapo húmedo y deja la pared impecable.
             </p>
             <div class="space-y-1 text-xs text-slate-400">
-              <p>• Acabado: Mate y Satinado señorial</p>
-              <p>• Rinde: 10 a 12 m²/L por mano (rinde una barbaridad)</p>
-              <p>• Envases: 1L, 4L, 10L y 20L</p>
+              <p>• Acabado: Mate aterciopelado y satinado</p>
+              <p>• Rinde: 10 a 12 m² por litro por mano</p>
+              <p>• Envases: 1L, 4L, 10L, 20L</p>
             </div>
           </div>
           <div class="pt-4 mt-4 border-t border-slate-800">
-            <a href="https://wa.me/5493455200514?text=Hola,%20quisiera%20consultar%20por%20Látex%20Interior%20Üxell" target="_blank" class="text-xs font-bold text-purple-400 hover:underline flex items-center justify-between">
-              <span>Consultar en Salta 258</span>
+            <a href="https://wa.me/5493455200514?text=Hola,%20quisiera%20consultar%20por%20Látex%20Interior%20Sarmiento" target="_blank" class="text-xs font-bold text-purple-400 hover:underline flex items-center justify-between">
+              <span>Consultar stock en Salta 258</span>
               <span>→</span>
             </a>
           </div>
         </div>
 
-        <!-- Frentes y Muros Exteriores -->
-        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-rose-500/60 hover:-translate-y-2 transition-all duration-300 shadow-xl flex flex-col justify-between tilt-card-3d reveal-on-scroll">
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-rose-500/60 hover:-translate-y-2 transition-all duration-300 shadow-xl flex flex-col justify-between tilt-card-3d fade-in-up-card stagger-2">
           <div>
             <span class="text-[11px] font-bold text-rose-400 uppercase tracking-wider block mb-2">Exteriores & Frentes</span>
-            <h3 class="text-lg font-bold text-white mb-2">Frentes y Muros Elastomérico</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Frentes y Muros Sarmiento Elastomérico</h3>
             <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              El auténtico poncho protector para la pared exterior. Membrana acrílica impermeable con filtro UV que sella microfisuras y se banca tormentas bravas y soles abrasadores sin cuartearse jamás.
+              El auténtico poncho protector para la pared exterior: se banca el sol entrerriano del verano y las tormentas sin cuartearse jamás.
             </p>
             <div class="space-y-1 text-xs text-slate-400">
-              <p>• Acabado: Mate hidrorepelente elástico</p>
-              <p>• Rinde: 8 a 10 m²/L por mano</p>
-              <p>• Envases: 4L, 10L y 20L</p>
+              <p>• Acabado: Mate hidrorepelente que sella microfisuras</p>
+              <p>• Rinde: 8 a 10 m² por litro por mano</p>
+              <p>• Envases: 4L, 10L, 20L</p>
             </div>
           </div>
           <div class="pt-4 mt-4 border-t border-slate-800">
-            <a href="https://wa.me/5493455200514?text=Hola,%20quisiera%20consultar%20por%20Frentes%20y%20Muros%20Üxell" target="_blank" class="text-xs font-bold text-rose-400 hover:underline flex items-center justify-between">
-              <span>Consultar en Salta 258</span>
+            <a href="https://wa.me/5493455200514?text=Hola,%20quisiera%20consultar%20por%20Frentes%20y%20Muros%20Sarmiento" target="_blank" class="text-xs font-bold text-rose-400 hover:underline flex items-center justify-between">
+              <span>Consultar stock en Salta 258</span>
               <span>→</span>
             </a>
           </div>
         </div>
 
-        <!-- Membranas Techos -->
-        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-500/60 hover:-translate-y-2 transition-all duration-300 shadow-xl flex flex-col justify-between tilt-card-3d reveal-on-scroll">
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-500/60 hover:-translate-y-2 transition-all duration-300 shadow-xl flex flex-col justify-between tilt-card-3d fade-in-up-card stagger-3">
           <div>
             <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-2">Impermeabilizantes de Techo</span>
-            <h3 class="text-lg font-bold text-white mb-2">Membrana en Pasta Fibrada</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Membrana en Pasta Fibrada Sarmiento</h3>
             <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Para dormir con total tranquilidad cuando llueve a cántaros. Fibras elásticas entretejidas que sellan losas y chapas, aguantando la dilatación del calor sin rajarse jamás.
+              Para dormir con total tranquilidad cuando llueve a cántaros. Fibras elásticas incorporadas que absorben la dilatación térmica.
             </p>
             <div class="space-y-1 text-xs text-slate-400">
-              <p>• Tonos: Blanco Térmico, Rojo Teja y Verde Selva</p>
-              <p>• Rinde: 1.2 a 1.5 kg por m² para trabajo definitivo</p>
-              <p>• Envases: 5kg, 10kg y 20kg</p>
+              <p>• Acabado: Membrana elástica transitable</p>
+              <p>• Rinde: 1.2 a 1.5 kg por m²</p>
+              <p>• Envases: 5kg, 10kg, 20kg</p>
             </div>
           </div>
           <div class="pt-4 mt-4 border-t border-slate-800">
-            <a href="https://wa.me/5493455200514?text=Hola,%20quisiera%20consultar%20por%20Membrana%20Fibrada%20Üxell" target="_blank" class="text-xs font-bold text-amber-400 hover:underline flex items-center justify-between">
-              <span>Consultar en Salta 258</span>
+            <a href="https://wa.me/5493455200514?text=Hola,%20quisiera%20consultar%20por%20Membrana%20Fibrada%20Sarmiento" target="_blank" class="text-xs font-bold text-amber-400 hover:underline flex items-center justify-between">
+              <span>Consultar stock en Salta 258</span>
               <span>→</span>
             </a>
           </div>
         </div>
 
-        <!-- Esmaltes & Maderas -->
-        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/60 hover:-translate-y-2 transition-all duration-300 shadow-xl flex flex-col justify-between tilt-card-3d reveal-on-scroll">
+        <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/60 hover:-translate-y-2 transition-all duration-300 shadow-xl flex flex-col justify-between tilt-card-3d fade-in-up-card stagger-4">
           <div>
             <span class="text-[11px] font-bold text-emerald-400 uppercase tracking-wider block mb-2">Metales, Maderas & Herrería</span>
-            <h3 class="text-lg font-bold text-white mb-2">Esmaltes 3 en 1 & Impregnantes Nobles</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Esmalte 3 en 1 & Impregnantes Nobles</h3>
             <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Antióxido, convertidor y esmalte de lustre parejo y gran estampa para rejas, portones y aberturas. Y para las maderas, impregnantes con filtro solar que nutren la veta y no se ampollan.
+              Antióxido, convertidor y esmalte para rejas y portones. Impregnantes con filtro solar que nutren la veta de la madera.
             </p>
             <div class="space-y-1 text-xs text-slate-400">
-              <p>• Acabados: Brillante parejo, Satinado y Mate señorial</p>
-              <p>• Rinde: 12 a 14 m²/L por mano</p>
-              <p>• Envases: 0.5L, 1L y 4L</p>
+              <p>• Acabado: Brillante parejo, satinado y mate</p>
+              <p>• Rinde: 12 a 14 m² por litro por mano</p>
+              <p>• Envases: 0.5L, 1L, 4L</p>
             </div>
           </div>
           <div class="pt-4 mt-4 border-t border-slate-800">
-            <a href="https://wa.me/5493455200514?text=Hola,%20quisiera%20consultar%20por%20Esmaltes%20Üxell" target="_blank" class="text-xs font-bold text-emerald-400 hover:underline flex items-center justify-between">
-              <span>Consultar en Salta 258</span>
+            <a href="https://wa.me/5493455200514?text=Hola,%20quisiera%20consultar%20por%20Esmaltes%20Sarmiento" target="_blank" class="text-xs font-bold text-emerald-400 hover:underline flex items-center justify-between">
+              <span>Consultar stock en Salta 258</span>
               <span>→</span>
             </a>
           </div>
@@ -459,29 +587,179 @@
 
       </div>
 
-      <!-- Banner de Sistema Tintométrico en el Local -->
-      <div class="mt-12 p-8 rounded-3xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-rose-950/30 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 reveal-on-scroll">
-        <div class="space-y-2">
-          <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">Sistema Tintométrico Computarizado</span>
-          <h3 class="text-xl sm:text-2xl font-bold text-white">¿Buscás un color con personalidad? Te preparamos más de 2.500 tonos en el acto</h3>
-          <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-            Traete una muestra, una foto o elegí de la carta oficial Üxell. Con nuestra máquina dosificadora digital le damos justo en la tecla al tono que tenés en la cabeza, para que tus ambientes luzcan con distinción.
-          </p>
+      <!-- Bento Grid: Lata 3D Pinturería Sarmiento + Sistema Tintométrico -->
+      <div class="mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Lata 3D Interactiva -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-3xl bg-slate-900/60 border border-slate-800 reveal-on-scroll">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5 mb-2">
+            ✨ Mové el cursor para girar la lata 3D
+          </span>
+          
+          <div id="can3dContainer" class="relative w-full max-w-[340px] h-[370px] flex items-center justify-center perspective-container select-none">
+            <div id="canShadow" class="absolute bottom-6 w-56 h-12 bg-black/70 rounded-full blur-xl pointer-events-none transition-transform duration-100"></div>
+            
+            <div id="can3dBody" class="relative w-52 h-72 preserve-3d transition-transform duration-75 ease-out">
+              <!-- Tapa cromada -->
+              <div class="absolute -top-3 left-0 right-0 h-10 rounded-full border-2 border-slate-300 shadow-md" style="transform: translateZ(10px) rotateX(90deg); background: radial-gradient(ellipse at center, #f1f5f9 0%, #cbd5e1 50%, #64748b 100%);">
+                <div class="absolute inset-1.5 rounded-full" style="background: radial-gradient(circle, #e11d48 0%, #be123c 60%, #881337 100%);"></div>
+              </div>
+              
+              <!-- Manija metálica -->
+              <div class="absolute -top-6 -left-3 -right-3 h-28 rounded-t-full border-[3px] border-slate-400/80 pointer-events-none" style="transform: translateZ(25px) rotateX(-20deg);"></div>
+              
+              <!-- Cuerpo Principal: Branding Pinturería Sarmiento -->
+              <div class="absolute inset-0 rounded-2xl overflow-hidden border border-slate-700/80 flex flex-col justify-between p-5 text-white shadow-2xl" style="transform: translateZ(15px); background: linear-gradient(135deg, #090d16 0%, #0f172a 40%, #1e1b4b 100%);">
+                <div id="canReflection" class="absolute inset-0 pointer-events-none opacity-40" style="background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.4) 45%, transparent 60%);"></div>
+                
+                <div class="relative z-10 flex items-center justify-between border-b border-slate-700/60 pb-2">
+                  <span class="text-[10px] font-bold tracking-widest uppercase text-amber-400">NOBLEZA & OFICIO</span>
+                  <span class="text-[10px] font-mono text-slate-400">BALDE 20L</span>
+                </div>
+                
+                <div class="relative z-10 my-auto text-center py-2">
+                  <div class="text-xl font-extrabold tracking-tight text-white uppercase">PINTURERÍA</div>
+                  <div class="text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-rose-400 to-purple-400 uppercase">
+                    SARMIENTO
+                  </div>
+                  <div class="h-1 w-24 mx-auto my-2 paint-gradient rounded-full"></div>
+                  <div class="text-xs font-bold text-slate-100 uppercase tracking-wide mt-1">Látex Acrílico</div>
+                  <div class="text-[10px] text-rose-300">Ultra Lavable · Salta 258</div>
+                </div>
+                
+                <div class="relative z-10 pt-2 border-t border-slate-700/60 flex items-center justify-between text-[10px]">
+                  <span class="font-extrabold text-white uppercase tracking-tight">Sarmiento</span>
+                  <span class="text-rose-400 font-bold">Sucursal Salta</span>
+                </div>
+              </div>
+
+              <!-- Base cromada -->
+              <div class="absolute -bottom-2 left-1 right-1 h-6 rounded-b-xl border-t border-slate-600" style="transform: translateZ(5px); background: linear-gradient(to bottom, #475569 0%, #1e293b 100%);"></div>
+            </div>
+          </div>
+
+          <div class="text-center mt-3 text-xs font-semibold text-slate-400">
+            Pinturas Sarmiento · Stock permanente en Salta 258
+          </div>
         </div>
-        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-          <a href="tel:03455200514" class="px-6 py-3 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 text-center">
-            📞 0345 520-0514
-          </a>
-          <a href="https://wa.me/5493455200514?text=Hola%20Pintureria%20Sarmiento,%20necesito%20consultar%20por%20un%20color" target="_blank" class="px-6 py-3 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-950/40 text-center">
-            Consultar por WhatsApp
-          </a>
+
+        <!-- Sistema Tintométrico Computarizado -->
+        <div class="lg:col-span-7 p-8 rounded-3xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-rose-950/30 border border-slate-800 space-y-6 reveal-on-scroll">
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">
+              Sistema Tintométrico Computarizado
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white">
+              ¿Buscás un color con personalidad? Te preparamos más de 2.500 tonos en el acto
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Traete una muestra, una foto o elegí de nuestra carta de colores. Con nuestra máquina dosificadora digital le damos justo en la tecla al tono que tenés en la cabeza, para que tus ambientes luzcan con distinción.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-amber-400 font-bold mb-1">Calibración Digital</div>
+              <p class="text-slate-400 text-[11px]">Pigmentos de alta fidelidad y máxima resistencia UV.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-emerald-400 font-bold mb-1">Entrega Inmediata</div>
+              <p class="text-slate-400 text-[11px]">Te llevás tu color preparado en pocos minutos.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-rose-400 font-bold mb-1">Registro de Fórmula</div>
+              <p class="text-slate-400 text-[11px]">Guardamos tu código para futuras repeticiones exactas.</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <a href="tel:03455200514" class="whitespace-nowrap px-6 py-3 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center gap-2 transition-colors">
+              <span>📞 Llamar al Mostrador: 0345 520-0514</span>
+            </a>
+            <a href="https://wa.me/5493455200514?text=Hola%20Pintureria%20Sarmiento%20Sucursal%20Salta,%20deseo%20consultar%20por%20un%20color%20personalizado" target="_blank" class="whitespace-nowrap px-6 py-3 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 flex items-center justify-center gap-2 transition-colors shadow-lg shadow-emerald-950/40">
+              <span>💬 Consultar Color por WhatsApp</span>
+            </a>
+          </div>
         </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- HORARIOS Y UBICACIÓN RESUMEN -->
+  <!-- SECCIÓN CALCULADORA DE PINTURA -->
+  <section id="calculadora" class="relative z-10 py-16 bg-slate-900/40 border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal-on-scroll">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Herramienta Práctica</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Calculadora de Litros Pinturería Sarmiento</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2">
+          Calculá de antemano cuántos litros vas a necesitar para no gastar de más ni quedarte a mitad de camino.
+        </p>
+      </div>
+
+      <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center reveal-on-scroll">
+        
+        <div class="md:col-span-7 space-y-5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Tipo de Producto Sarmiento</label>
+            <div class="grid grid-cols-2 gap-2" id="calcProductButtons">
+              <button type="button" data-val="latex" class="calc-btn p-2.5 rounded-xl text-xs font-bold border text-left transition-all bg-rose-600 border-rose-500 text-white shadow-md">
+                Látex Interior (10 m²/L)
+              </button>
+              <button type="button" data-val="exterior" class="calc-btn p-2.5 rounded-xl text-xs font-bold border text-left transition-all bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700">
+                Frentes & Muros (9 m²/L)
+              </button>
+              <button type="button" data-val="membrana" class="calc-btn p-2.5 rounded-xl text-xs font-bold border text-left transition-all bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700">
+                Membrana Techos (1.3 kg/m²)
+              </button>
+              <button type="button" data-val="esmalte" class="calc-btn p-2.5 rounded-xl text-xs font-bold border text-left transition-all bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700">
+                Esmalte Sintético (12 m²/L)
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-300 mb-1">
+              <span>Superficie a pintar:</span>
+              <span id="surfaceVal" class="font-bold text-amber-400">45 m²</span>
+            </div>
+            <input id="surfaceSlider" type="range" min="5" max="250" step="5" value="45" class="w-full accent-rose-500 cursor-pointer" />
+          </div>
+
+          <div id="handsContainer">
+            <div class="flex items-center justify-between text-xs text-slate-300 mb-1">
+              <span>Cantidad de manos:</span>
+              <span id="handsVal" class="font-bold text-amber-400">2 manos</span>
+            </div>
+            <div class="flex gap-2">
+              <button type="button" data-hands="1" class="hands-btn flex-1 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700">1 mano</button>
+              <button type="button" data-hands="2" class="hands-btn flex-1 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-slate-800 border-rose-500 text-white">2 manos</button>
+              <button type="button" data-hands="3" class="hands-btn flex-1 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700">3 manos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-5 p-6 rounded-2xl bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-800 text-center space-y-3">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Estimación Recomendada</span>
+          <div id="calculatedResult" class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-rose-400">
+            9.0 Litros
+          </div>
+          <p class="text-[11px] text-slate-400">
+            Rendimiento estimado de primera calidad. En el mostrador te asesoramos con la calibración exacta.
+          </p>
+          <a id="calcWhatsappLink" href="https://wa.me/5493455200514?text=Hola%20Pintureria%20Sarmiento,%20calcule%20que%20necesito%209.0%20Litros%20de%20pintura.%20Deseo%20cotizar." target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors flex items-center justify-center gap-1.5 shadow-md">
+            <span>💬 Pedir este pedido por WhatsApp</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN HORARIOS Y UBICACIÓN RESUMEN -->
   <section id="horarios" class="relative z-10 py-16 bg-slate-950 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left items-center reveal-on-scroll">
@@ -495,17 +773,19 @@
         <div class="space-y-1 border-y md:border-y-0 md:border-x border-slate-800 py-4 md:py-0 md:px-8">
           <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Horarios del Mostrador</span>
           <p class="text-xs text-slate-200">
-            <strong>Lunes a Viernes:</strong> Por la mañana hasta las 12:00 p.m. · Tarde 3:30 p.m. a 19:30 hs
+            <strong>Lunes a Viernes:</strong> Mañana hasta 12:00 | Tarde 3:30 p.m. a 19:30 hs
           </p>
           <p class="text-xs text-slate-200">
-            <strong>Sábados:</strong> de 08:00 a 12:30 hs (corrido)
+            <strong>Sábados:</strong> 08:00 a 12:30 hs
           </p>
         </div>
 
         <div class="space-y-1 md:text-right">
           <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Contacto Directo</span>
           <p class="text-lg font-bold text-white">
-            <a href="tel:03455200514" class="hover:text-emerald-400 tabular-nums">0345 520-0514</a>
+            <a href="tel:03455200514" class="hover:text-emerald-400 tabular-nums">
+              0345 520-0514
+            </a>
           </p>
           <p class="text-xs text-slate-400">Te lo alcanzamos a domicilio en cualquier rincón de Concordia</p>
         </div>
@@ -517,15 +797,24 @@
   <!-- PIE DE PÁGINA (FOOTER) -->
   <footer class="relative z-10 bg-black py-16 border-t border-slate-900 text-slate-400">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-900">
         
         <div class="space-y-3">
-          <div class="bg-slate-950 border border-slate-800 p-2 rounded-xl inline-block">
-            <span class="font-extrabold text-white text-base tracking-tight uppercase block">Pintureria Sarmiento</span>
+          <div class="flex items-center gap-3">
+            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 shrink-0 shadow-lg rounded-xl" aria-label="Logo Oficial Pinturería Sarmiento">
+              <rect x="4" y="4" width="64" height="64" rx="16" fill="#090D16" stroke="#334155" stroke-width="2" />
+              <path d="M48 20 C42 16, 26 16, 22 26 C19 33, 26 38, 36 40 C48 42, 53 47, 50 54 C46 62, 30 63, 22 56" stroke="url(#sarmientoGrad1)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="24" cy="23" r="3.5" fill="#FBBF24" />
+              <circle cx="48" cy="53" r="3.5" fill="#38BDF8" />
+            </svg>
+            <div>
+              <h4 class="text-white font-extrabold text-sm uppercase tracking-tight">Pinturería Sarmiento</h4>
+              <p class="text-xs text-rose-400 font-semibold">Sucursal Salta · Concordia, E.R.</p>
+            </div>
           </div>
-          <p class="text-xs text-rose-400 font-semibold">Sucursal Salta · Concordia, Entre Ríos</p>
           <p class="text-xs text-slate-400 leading-relaxed">
-            Distribuidor Oficial <strong>Üxell Pinturas</strong>. Especialistas en pinturas látex, impermeabilizantes y esmaltes con el oficio, la calidez y la palabra empeñada de siempre.
+            Especialistas en pinturas látex, impermeabilizantes y esmaltes con el oficio, la calidez y la palabra empeñada de siempre.
           </p>
         </div>
 
@@ -534,15 +823,15 @@
           <p><strong>Dirección:</strong> Salta 258</p>
           <p>E3202 Concordia, Entre Ríos</p>
           <p><strong>Teléfono:</strong> <a href="tel:03455200514" class="text-rose-400 hover:underline">0345 520-0514</a></p>
-          <p class="text-emerald-400 pt-1">🚚 Te lo alcanzamos a domicilio y a obra</p>
+          <p class="text-emerald-400 font-medium pt-1">🚚 Te lo alcanzamos a domicilio y a obra</p>
         </div>
 
         <div class="space-y-2 text-xs">
           <h4 class="font-bold text-white uppercase tracking-wider">Horarios Comerciales</h4>
           <p><strong>Lunes a Viernes:</strong></p>
-          <p class="text-slate-400">Mañana: hasta las 12:00 p.m.</p>
-          <p class="text-slate-400">Tarde: 3:30 p.m. a 19:30 hs</p>
-          <p class="text-slate-200 pt-1"><strong>Sábados:</strong> 08:00 a 12:30 hs</p>
+          <p className="text-slate-400">Mañana hasta las 12:00 p.m.</p>
+          <p className="text-slate-400">Tarde: 3:30 p.m. a 19:30 hs</p>
+          <p className="text-slate-200 pt-1"><strong>Sábados:</strong> 08:00 a 12:30 hs</p>
         </div>
 
         <div class="space-y-2 text-xs">
@@ -555,67 +844,52 @@
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <p>© 2026 Pintureria Sarmiento Sucursal Salta · Concordia, Entre Ríos. Un negocio atendido con orgullo por gente de acá.</p>
-        <p>Distribuidor Oficial Üxell Pinturas Argentina.</p>
+        <p>© 2026 Pinturería Sarmiento Sucursal Salta · Concordia, Entre Ríos. Un negocio atendido con orgullo por gente de acá.</p>
+        <p>Pinturería Sarmiento Argentina.</p>
       </div>
+
     </div>
   </footer>
 
-  <!-- BOTONES FLOTANTES: VOLVER ARRIBA Y WHATSAPP -->
+  <!-- Botón Flotante de WhatsApp -->
   <div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2.5">
-    <button id="scrollTopBtn" type="button" aria-label="Volver arriba" class="p-2.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 backdrop-blur-md shadow-xl transition-all">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-    </button>
-    <a href="https://wa.me/5493455200514?text=Hola%20Pintureria%20Sarmiento%20Sucursal%20Salta,%20deseo%20hacer%20una%20consulta" target="_blank" aria-label="Contactar por WhatsApp a Sucursal Salta" class="flex items-center gap-2 px-4 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.066-2.227-.57-1.833-.761-3.003-2.614-3.095-2.736-.092-.121-.749-.997-.749-1.901 0-.905.474-1.349.643-1.533.169-.184.37-.23.493-.23.123 0 .247 0 .356.006.115.006.269-.043.421.322.158.38.54 1.319.588 1.415.048.096.08.209.016.337-.064.127-.096.208-.192.32-.096.112-.202.25-.289.336-.096.096-.197.201-.085.393.112.192.498.822 1.069 1.331.733.653 1.352.855 1.544.951.192.096.304.08.417-.048.112-.129.481-.562.61-.754.128-.193.257-.16.433-.096.177.064 1.124.53 1.317.626.193.096.321.144.369.225.048.08.048.466-.096.871z"/></svg>
+    <a href="https://wa.me/5493455200514" target="_blank" class="flex items-center gap-2 px-4 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95">
+      <span class="text-lg">💬</span>
       <span class="text-xs font-bold hidden sm:inline">WhatsApp Sucursal Salta</span>
     </a>
   </div>
 
-  <!-- JAVASCRIPT VANILLA PARA EFECTOS 3D, SCROLL Y ESTADO -->
   <script>
-    // 1. Barra de progreso de Scroll y Header dinámico
-    const progressBar = document.getElementById('scrollProgressBar');
-    const header = document.getElementById('mainHeader');
-    const scrollBtn = document.getElementById('scrollTopBtn');
-
     window.addEventListener('scroll', function() {
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-      if (progressBar) progressBar.style.width = progress + '%';
+      const totalScroll = document.documentElement.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = windowHeight > 0 ? (totalScroll / windowHeight) * 100 : 0;
+      const bar = document.getElementById('scrollProgressBar');
+      if (bar) bar.style.width = progress + '%';
 
+      const header = document.getElementById('mainHeader');
       if (header) {
-        if (scrollTop > 30) {
-          header.classList.add('bg-slate-950/98', 'shadow-2xl', 'py-2');
-          header.classList.remove('bg-slate-950/90');
+        if (totalScroll > 30) {
+          header.classList.add('bg-slate-950/95', 'shadow-2xl', 'py-1');
         } else {
-          header.classList.remove('bg-slate-950/98', 'shadow-2xl', 'py-2');
-          header.classList.add('bg-slate-950/90');
+          header.classList.remove('bg-slate-950/95', 'shadow-2xl', 'py-1');
         }
       }
 
-      // Scroll Reveal
-      const reveals = document.querySelectorAll('.reveal-on-scroll');
+      // Reveal on scroll elements fallback check
+      const reveals = document.querySelectorAll('.reveal-on-scroll, .fade-in-up-card, .fade-in-up-pillar, .fade-in-up-pronounced');
       reveals.forEach(function(el) {
         const rect = el.getBoundingClientRect();
         if (rect.top <= window.innerHeight * 0.88) {
           el.classList.add('is-visible');
         }
       });
-    }, { passive: true });
+    });
 
-    if (scrollBtn) {
-      scrollBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    // Menú móvil toggle
-    const menuBtn = document.getElementById('mobileMenuBtn');
+    const mobileBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', function() {
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', function() {
         mobileMenu.classList.toggle('hidden');
       });
       document.querySelectorAll('.mobile-link').forEach(function(link) {
@@ -625,8 +899,7 @@
       });
     }
 
-    // 2. Cálculo en tiempo real de Horarios en Concordia, Entre Ríos (America/Argentina/Buenos_Aires)
-    (function calculateLiveStatus() {
+    (function updateStoreStatus() {
       try {
         const now = new Date();
         const formatter = new Intl.DateTimeFormat('es-AR', {
@@ -634,37 +907,40 @@
           hour: 'numeric',
           minute: 'numeric',
           weekday: 'short',
-          hour12: false,
+          hour12: false
         });
         const parts = formatter.formatToParts(now);
-        const hour = parseInt(parts.find(p => p.type === 'hour')?.value || '10', 10);
-        const minute = parseInt(parts.find(p => p.type === 'minute')?.value || '0', 10);
-        const day = parts.find(p => p.type === 'weekday')?.value.toLowerCase() || 'lun';
-        const mins = hour * 60 + minute;
+        const hourPart = parts.find(p => p.type === 'hour');
+        const minutePart = parts.find(p => p.type === 'minute');
+        const weekdayPart = parts.find(p => p.type === 'weekday');
 
-        const isSun = day.includes('dom');
-        const isSat = day.includes('sáb') || day.includes('sab');
+        const hour = hourPart ? parseInt(hourPart.value, 10) : 10;
+        const min = minutePart ? parseInt(minutePart.value, 10) : 0;
+        const mins = hour * 60 + min;
+        const day = weekdayPart ? weekdayPart.value.toLowerCase() : 'lun';
 
         const badge = document.getElementById('liveStatusBadge');
         const detail = document.getElementById('liveStatusDetail');
         if (!badge || !detail) return;
 
-        if (isSun) {
-          badge.textContent = 'CERRADO HOY (DOMINGO)';
-          badge.className = 'text-xs text-amber-400 font-bold block mb-1';
+        const isSunday = day.includes('dom');
+        const isSaturday = day.includes('sáb') || day.includes('sab');
+
+        if (isSunday) {
+          badge.textContent = 'CERRADO LOS DOMINGOS';
+          badge.className = 'text-xs text-slate-400 font-bold block mb-1';
           detail.textContent = 'Reabre lunes a las 08:00 hs';
-        } else if (isSat) {
+        } else if (isSaturday) {
           if (mins >= 480 && mins <= 750) {
-            badge.textContent = '⏰ ABIERTO HOY (SÁBADO)';
+            badge.textContent = '⏰ ABIERTO AHORA (SÁBADO)';
             badge.className = 'text-xs text-emerald-400 font-bold block mb-1';
-            detail.textContent = 'Atención hasta las 12:30 hs';
+            detail.textContent = 'Atención corrida hasta las 12:30 hs';
           } else {
             badge.textContent = 'CERRADO POR HOY';
             badge.className = 'text-xs text-amber-400 font-bold block mb-1';
             detail.textContent = 'Reabre lunes 08:00 hs';
           }
         } else {
-          // Lunes a Viernes
           if (mins >= 480 && mins <= 720) {
             badge.textContent = '⏰ ABIERTO AHORA (MAÑANA)';
             badge.className = 'text-xs text-emerald-400 font-bold block mb-1';
@@ -688,13 +964,11 @@
       }
     })();
 
-    // 3. Efecto 3D Interactivo de la Lata de Pintura Üxell
     (function init3DCan() {
       const container = document.getElementById('can3dContainer');
       const canBody = document.getElementById('can3dBody');
       const reflection = document.getElementById('canReflection');
       const shadow = document.getElementById('canShadow');
-
       if (!container || !canBody) return;
 
       let isHovered = false;
@@ -707,10 +981,8 @@
         const rect = container.getBoundingClientRect();
         const x = e.clientX - rect.left - (rect.width / 2);
         const y = e.clientY - rect.top - (rect.height / 2);
-
         rotY = (x / (rect.width / 2)) * 35;
         rotX = -(y / (rect.height / 2)) * 25;
-
         applyRotation();
       });
 
@@ -740,43 +1012,113 @@
       loop();
     })();
 
-    // 4. Efecto 3D Tilt en la Tarjeta de Nuestra Esquina (Salta 258)
-    (function initStorefront3D() {
-      const card = document.getElementById('storeCard');
-      const glare = document.getElementById('storeGlare');
-      if (!card) return;
+    (function initCalculator() {
+      let currentType = 'latex';
+      let currentSurface = 45;
+      let currentHands = 2;
 
-      card.addEventListener('mousemove', function(e) {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+      const surfaceSlider = document.getElementById('surfaceSlider');
+      const surfaceVal = document.getElementById('surfaceVal');
+      const handsVal = document.getElementById('handsVal');
+      const handsContainer = document.getElementById('handsContainer');
+      const resultDiv = document.getElementById('calculatedResult');
+      const waLink = document.getElementById('calcWhatsappLink');
+      const productBtns = document.querySelectorAll('.calc-btn');
+      const handsBtns = document.querySelectorAll('.hands-btn');
 
-        const tiltX = ((y - centerY) / centerY) * -12;
-        const tiltY = ((x - centerX) / centerX) * 14;
+      function updateCalc() {
+        let yieldRate = 10;
+        let isKg = false;
+        if (currentType === 'exterior') yieldRate = 9;
+        if (currentType === 'membrana') {
+          yieldRate = 1.3;
+          isKg = true;
+        }
+        if (currentType === 'esmalte') yieldRate = 12;
 
-        card.style.transform = 'rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg)';
+        if (isKg) {
+          if (handsContainer) handsContainer.style.display = 'none';
+          const kg = Math.ceil(currentSurface * 1.3);
+          if (resultDiv) resultDiv.textContent = kg + ' kg';
+          if (waLink) {
+            waLink.href = 'https://wa.me/5493455200514?text=' + encodeURIComponent('Hola Pintureria Sarmiento, calculé que necesito ' + kg + ' kg de Membrana para ' + currentSurface + 'm2. Deseo cotizar.');
+          }
+        } else {
+          if (handsContainer) handsContainer.style.display = 'block';
+          const liters = ((currentSurface * currentHands) / yieldRate).toFixed(1);
+          if (resultDiv) resultDiv.textContent = liters + ' Litros';
+          if (waLink) {
+            waLink.href = 'https://wa.me/5493455200514?text=' + encodeURIComponent('Hola Pintureria Sarmiento, calculé que necesito ' + liters + ' Litros de pintura para ' + currentSurface + 'm2. Deseo cotizar.');
+          }
+        }
+      }
 
-        if (glare) {
-          glare.style.opacity = '0.35';
-          glare.style.background = 'radial-gradient(circle at ' + (x / rect.width * 100) + '% ' + (y / rect.height * 100) + '%, rgba(255,255,255,0.4), transparent 60%)';
+      productBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          productBtns.forEach(function(b) {
+            b.className = 'calc-btn p-2.5 rounded-xl text-xs font-bold border text-left transition-all bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700';
+          });
+          btn.className = 'calc-btn p-2.5 rounded-xl text-xs font-bold border text-left transition-all bg-rose-600 border-rose-500 text-white shadow-md';
+          currentType = btn.getAttribute('data-val') || 'latex';
+          updateCalc();
+        });
+      });
+
+      if (surfaceSlider) {
+        surfaceSlider.addEventListener('input', function(e) {
+          currentSurface = parseInt(e.target.value, 10);
+          if (surfaceVal) surfaceVal.textContent = currentSurface + ' m²';
+          updateCalc();
+        });
+      }
+
+      handsBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          handsBtns.forEach(function(b) {
+            b.className = 'hands-btn flex-1 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700';
+          });
+          btn.className = 'hands-btn flex-1 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-slate-800 border-rose-500 text-white';
+          currentHands = parseInt(btn.getAttribute('data-hands') || '2', 10);
+          if (handsVal) handsVal.textContent = currentHands + (currentHands === 1 ? ' mano' : ' manos');
+          updateCalc();
+        });
+      });
+
+      updateCalc();
+    })();
+
+    // Animación Fade-In-Up al hacer scroll con IntersectionObserver
+    (function initScrollAnimations() {
+      const animatedElements = document.querySelectorAll(
+        '.reveal-on-scroll, .fade-in-up-card, .fade-in-up-pillar, .fade-in-up-pronounced'
+      );
+
+      // Elementos visibles por encima del pliegue al cargar
+      animatedElements.forEach(function(el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.85) {
+          el.classList.add('is-visible');
         }
       });
 
-      card.addEventListener('mouseleave', function() {
-        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-        if (glare) glare.style.opacity = '0';
-      });
-    })();
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries, obs) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.12
+        });
 
-    // Trigger initial reveal check
-    setTimeout(function() {
-      const reveals = document.querySelectorAll('.reveal-on-scroll');
-      reveals.forEach(function(el) {
-        el.classList.add('is-visible');
-      });
-    }, 100);
+        animatedElements.forEach(function(el) {
+          observer.observe(el);
+        });
+      }
+    })();
   </script>
 </body>
 </html>

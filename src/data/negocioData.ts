@@ -2,7 +2,8 @@ export interface NegocioData {
   nombre: string;
   sucursal: string;
   slogan: string;
-  distribuidor_oficial: string;
+  marca: string;
+  distribuidor_oficial?: string;
   localidad: string;
   codigo_postal: string;
   direccion: {
@@ -35,7 +36,7 @@ export interface NegocioData {
     titulo: string;
     descripcion: string;
   }>;
-  lineas_uxell: Array<{
+  lineas_productos: Array<{
     id: string;
     nombre: string;
     categoria: string;
@@ -46,11 +47,51 @@ export interface NegocioData {
   }>;
 }
 
+const lineasSarmiento = [
+  {
+    id: "latex_interior",
+    nombre: "Látex Interior Sarmiento Ultra Lavable",
+    categoria: "Interiores con Estilo",
+    acabado: "Mate aterciopelado y satinado de gran categoría",
+    rendimiento: "10 a 12 m² por litro por mano (rinde una barbaridad)",
+    envases: ["1L", "4L", "10L", "20L"],
+    destacado: "Fórmula noble antihongo de altísimo poder cubritivo. Se limpia fácilmente con un trapo húmedo y deja la pared impecable."
+  },
+  {
+    id: "frentes_muros",
+    nombre: "Frentes y Muros Sarmiento Elastomérico",
+    categoria: "Exteriores & Frentes",
+    acabado: "Mate hidrorepelente que sella microfisuras",
+    rendimiento: "8 a 10 m² por litro por mano",
+    envases: ["4L", "10L", "20L"],
+    destacado: "El auténtico poncho protector para la pared exterior: se banca el sol entrerriano del verano y las tormentas más bravas sin cuartearse jamás."
+  },
+  {
+    id: "membrana_fibrada",
+    nombre: "Membrana en Pasta Fibrada Sarmiento",
+    categoria: "Impermeabilizantes de Techo",
+    acabado: "Membrana elástica transitable",
+    rendimiento: "1.2 a 1.5 kg por m² para trabajo definitivo",
+    envases: ["5kg", "10kg", "20kg"],
+    destacado: "Para dormir con total tranquilidad cuando llueve a cántaros. Fibras elásticas incorporadas que absorben la dilatación térmica de losas y chapas."
+  },
+  {
+    id: "esmaltes_maderas",
+    nombre: "Esmalte 3 en 1 & Impregnantes Nobles Sarmiento",
+    categoria: "Metales, Maderas & Herrería",
+    acabado: "Brillante parejo, satinado y mate señorial",
+    rendimiento: "12 a 14 m² por litro por mano",
+    envases: ["0.5L", "1L", "4L"],
+    destacado: "Antióxido, convertidor y esmalte de gran estampa para rejas y portones. Impregnantes con filtro solar que nutren la veta de la madera sin ampollarse."
+  }
+];
+
 export const negocioData: NegocioData = {
   nombre: "Pintureria Sarmiento",
   sucursal: "Sucursal Salta",
   slogan: "Expertos en Color · Atendido por Gente de Acá",
-  distribuidor_oficial: "Üxell Pinturas",
+  marca: "Pinturería Sarmiento",
+  distribuidor_oficial: "Pinturería Sarmiento",
   localidad: "Concordia, Entre Ríos, Argentina",
   codigo_postal: "E3202",
   direccion: {
@@ -91,8 +132,8 @@ export const negocioData: NegocioData = {
     },
     {
       id: "sistema_tintometrico",
-      titulo: "Sistema Tintométrico Computarizado",
-      descripcion: "Preparamos más de 2.500 colores en el acto con calibración exacta y pigmentos originales Üxell para dar en la tecla con el tono que soñás."
+      titulo: "Sistema Tintométrico Computarizado Sarmiento",
+      descripcion: "Preparamos más de 2.500 colores en el acto con calibración exacta y pigmentos de máxima resistencia UV para dar en la tecla con el tono que soñás."
     },
     {
       id: "estacionamiento_carga",
@@ -100,42 +141,5 @@ export const negocioData: NegocioData = {
       descripcion: "Espacio de detención frente a Salta 258 para que frenes el auto, cargues tranquilo los tachos pesados sin vueltas y sigas camino."
     }
   ],
-  lineas_uxell: [
-    {
-      id: "latex_interior",
-      nombre: "Látex Interior Ultra Lavable",
-      categoria: "Interiores con Estilo",
-      acabado: "Mate aterciopelado y satinado de gran categoría",
-      rendimiento: "10 a 12 m² por litro por mano (rinde una barbaridad)",
-      envases: ["1L", "4L", "10L", "20L"],
-      destacado: "Fórmula noble antihongo de altísimo poder cubritivo. Se limpia fácilmente con un trapo húmedo y deja la pared impecable."
-    },
-    {
-      id: "frentes_muros",
-      nombre: "Frentes y Muros Elastomérico",
-      categoria: "Exteriores & Frentes",
-      acabado: "Mate hidrorepelente que sella microfisuras",
-      rendimiento: "8 a 10 m² por litro por mano",
-      envases: ["4L", "10L", "20L"],
-      destacado: "El auténtico poncho protector para la pared exterior: se banca el sol entrerriano del verano y las tormentas más bravas sin cuartearse jamás."
-    },
-    {
-      id: "membrana_fibrada",
-      nombre: "Membrana en Pasta Fibrada",
-      categoria: "Impermeabilizantes de Techo",
-      acabado: "Membrana elástica transitable",
-      rendimiento: "1.2 a 1.5 kg por m² para trabajo definitivo",
-      envases: ["5kg", "10kg", "20kg"],
-      destacado: "Para dormir con total tranquilidad cuando llueve a cántaros. Fibras elásticas incorporadas que absorben la dilatación térmica de losas y chapas."
-    },
-    {
-      id: "esmaltes_maderas",
-      nombre: "Esmalte 3 en 1 & Impregnantes Nobles",
-      categoria: "Metales, Maderas & Herrería",
-      acabado: "Brillante parejo, satinado y mate señorial",
-      rendimiento: "12 a 14 m² por litro por mano",
-      envases: ["0.5L", "1L", "4L"],
-      destacado: "Antióxido, convertidor y esmalte de gran estampa para rejas y portones. Impregnantes con filtro solar que nutren la veta de la madera sin ampollarse."
-    }
-  ]
+  lineas_productos: lineasSarmiento
 };

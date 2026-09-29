@@ -27,7 +27,7 @@ html {
   transition: width 0.1s ease-out;
 }
 
-/* Degradado de la marca Üxell */
+/* Degradado de la marca Pinturería Sarmiento */
 .paint-gradient {
   background: linear-gradient(90deg, #7E22CE 0%, #C026D3 25%, #E11D48 50%, #EA580C 75%, #FBBF24 100%);
 }

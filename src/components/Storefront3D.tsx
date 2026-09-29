@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { MapPin, Phone, Clock, Navigation, ExternalLink, ShieldCheck } from 'lucide-react';
-import storefrontImg from '../assets/images/esquina_sarmiento_salta_1790612871018.jpg';
+import { MapPin, Phone, Clock, Navigation, ExternalLink, ShieldCheck, Sparkles, Truck, CheckCircle2, MessageCircle } from 'lucide-react';
+import { negocioData } from '../data/negocioData';
 
 export const Storefront3D: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -12,18 +12,17 @@ export const Storefront3D: React.FC = () => {
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -12;
-    const rotateY = ((x - centerX) / centerX) * 15;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 10;
 
     setRotate({ x: rotateX, y: rotateY });
     setGlare({
       x: (x / rect.width) * 100,
       y: (y / rect.height) * 100,
-      opacity: 0.35,
+      opacity: 0.25,
     });
   };
 
@@ -37,7 +36,7 @@ export const Storefront3D: React.FC = () => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative rounded-3xl p-3 bg-gradient-to-b from-slate-800/80 to-slate-900/90 border border-slate-700/80 shadow-2xl transition-all duration-200 ease-out"
+      className="relative rounded-3xl p-5 bg-gradient-to-b from-slate-800/90 to-slate-900 border border-slate-700/80 shadow-2xl transition-all duration-200 ease-out"
       style={{
         perspective: '1200px',
         transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
@@ -52,79 +51,110 @@ export const Storefront3D: React.FC = () => {
         }}
       />
 
-      {/* Main Store Visual Frame with 3D Depth */}
-      <div
-        className="relative rounded-2xl overflow-hidden aspect-[16/10] bg-slate-950 border border-slate-700/60 shadow-inner group"
-        style={{ transform: 'translateZ(20px)' }}
-      >
-        <img
-          src={storefrontImg}
-          alt="Foto real de Pintureria Sarmiento Sucursal Salta en la esquina de Salta 258, Concordia"
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-          referrerPolicy="no-referrer"
-        />
-
-        {/* Ambient Dark Gradient for Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
-
-        {/* 3D Floating Tag: Location Pin */}
-        <div
-          className="absolute top-4 left-4 z-20 transition-transform duration-200"
-          style={{ transform: 'translateZ(35px)' }}
-        >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/90 backdrop-blur-md border border-slate-700 text-xs font-bold text-white shadow-lg">
-            <MapPin className="w-3.5 h-3.5 text-rose-500" />
-            <span>Salta 258 · Concordia</span>
+      <div className="relative space-y-5" style={{ transform: 'translateZ(15px)' }}>
+        
+        {/* Top Header Card */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center text-white shadow-lg shadow-rose-950/40">
+              <MapPin className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-lg font-extrabold text-white tracking-tight uppercase">
+                  Pinturería Sarmiento
+                </h3>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">
+                  Sucursal Salta
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 font-medium">
+                {negocioData.direccion.calle} {negocioData.direccion.numero} · {negocioData.direccion.interseccion}
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* 3D Floating Tag: Corner Notice */}
-        <div
-          className="absolute top-4 right-4 z-20 transition-transform duration-200"
-          style={{ transform: 'translateZ(35px)' }}
-        >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/90 backdrop-blur-md border border-slate-700 text-xs font-bold text-emerald-400 shadow-lg">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-950/80 border border-emerald-500/40 text-xs font-bold text-emerald-400">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>Atención de Vecino a Vecino</span>
           </div>
         </div>
 
-        {/* Bottom Store Details Overlaid */}
-        <div
-          className="absolute bottom-4 left-4 right-4 z-20 p-4 rounded-xl bg-slate-950/95 backdrop-blur-md border border-slate-800 shadow-xl space-y-2"
-          style={{ transform: 'translateZ(30px)' }}
-        >
-          <div className="flex items-center justify-between">
-            <h3 className="text-base font-extrabold text-white uppercase tracking-tight">
-              Pintureria Sarmiento · Sucursal Salta
-            </h3>
-            <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider">
-              La Esquina del Color y la Confianza
+        {/* Interactive Location Showcase Hub (Sin imagen artificial) */}
+        <div className="p-4 rounded-2xl bg-slate-950/90 border border-slate-800 space-y-4">
+          <div className="flex items-center justify-between text-xs">
+            <span className="font-bold text-slate-200 flex items-center gap-1.5">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              Nuestra Esquina Tradicional & Punto de Encuentro
             </span>
+            <span className="text-[11px] font-mono text-slate-400">Concordia, Entre Ríos</span>
           </div>
+
           <p className="text-xs text-slate-300 leading-relaxed">
-            Nuestra esquina tradicional en Salta 258. Depósito bien surtido con toda la línea Üxell y lugar cómodo para detener el auto y cargar baldes sin apuros ni complicaciones.
+            Nuestro local en Salta 258 está preparado para brindarte la mejor experiencia de compra. 
+            Contamos con salón de ventas con asesoramiento mano a mano, depósito permanente de mercadería, 
+            sistema tintométrico computarizado para preparar tus colores al instante y espacio de carga cómodo 
+            frente al local para retirar latas y tachos pesados sin complicaciones.
           </p>
-          <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-slate-800/80">
-            <a
-              href="tel:03455200514"
-              className="text-emerald-400 font-bold hover:underline flex items-center gap-1"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              <span>Peganos un llamado: 0345 520-0514</span>
-            </a>
-            <a
-              href="https://maps.google.com/?q=Salta+258,+Concordia,+Entre+Rios"
-              target="_blank"
-              rel="noreferrer"
-              className="text-blue-400 font-bold hover:underline flex items-center gap-1"
-            >
-              <Navigation className="w-3.5 h-3.5" />
-              <span>Cómo llegar en Google Maps</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+
+          {/* 3 Key Operational Pillars */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+            <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs fade-in-up-pronounced stagger-1">
+              <div className="text-rose-400 font-bold mb-1 flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Salón & Mostrador</span>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                Atención franca, mates y el mejor consejo de oficio.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs fade-in-up-pronounced stagger-2">
+              <div className="text-amber-400 font-bold mb-1 flex items-center gap-1.5">
+                <Truck className="w-3.5 h-3.5" />
+                <span>Zona de Carga</span>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                Parás sobre Salta 258, cargás los tachos y seguís viaje.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs fade-in-up-pronounced stagger-3">
+              <div className="text-blue-400 font-bold mb-1 flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Envío a Domicilio</span>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                Te lo llevamos a la puerta de tu casa o al pie de la obra.
+              </p>
+            </div>
           </div>
         </div>
+
+        {/* Action Toolbar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-1 text-xs">
+          <a
+            href={negocioData.direccion.google_maps_url}
+            target="_blank"
+            rel="noreferrer"
+            className="flex-1 min-w-[200px] py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-center flex items-center justify-center gap-2 shadow-md transition-all"
+          >
+            <Navigation className="w-4 h-4" />
+            <span>Cómo Llegar en Google Maps</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+
+          <a
+            href={negocioData.contacto.whatsapp_url}
+            target="_blank"
+            rel="noreferrer"
+            className="flex-1 min-w-[200px] py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-center flex items-center justify-center gap-2 shadow-md transition-all"
+          >
+            <MessageCircle className="w-4 h-4" />
+            <span>Escribinos al WhatsApp</span>
+          </a>
+        </div>
+
       </div>
     </div>
   );

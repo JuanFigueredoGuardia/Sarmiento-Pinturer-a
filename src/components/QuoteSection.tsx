@@ -4,7 +4,7 @@ import { Send, CheckCircle2, MessageCircle, Phone, Truck, ShieldCheck } from 'lu
 export const QuoteSection: React.FC = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [category, setCategory] = useState('Látex Interior Üxell');
+  const [category, setCategory] = useState('Látex Interior Sarmiento');
   const [delivery, setDelivery] = useState('concordia');
   const [area, setArea] = useState('');
   const [message, setMessage] = useState('');
@@ -43,7 +43,7 @@ export const QuoteSection: React.FC = () => {
             Pedir Presupuesto sin Compromiso
           </h2>
           <p className="text-slate-400 text-sm mt-3 leading-relaxed">
-            Te cotizamos al instante con los mejores precios por volumen, promociones de fábrica Üxell y coordinación de entrega a domicilio.
+            Te cotizamos al instante con los mejores precios por volumen, promociones de Pinturería Sarmiento y coordinación de entrega a domicilio.
           </p>
         </div>
 
@@ -123,7 +123,7 @@ export const QuoteSection: React.FC = () => {
                     onChange={(e) => setCategory(e.target.value)}
                     className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-rose-500"
                   >
-                    <option value="Látex Interior Üxell">Látex Interior Üxell</option>
+                    <option value="Látex Interior Sarmiento">Látex Interior Sarmiento</option>
                     <option value="Frentes y Muros Exterior">Frentes y Muros Exterior</option>
                     <option value="Membrana Fibrada Techos">Membrana Fibrada Techos</option>
                     <option value="Esmalte Sintético 3 en 1">Esmalte Sintético 3 en 1</option>

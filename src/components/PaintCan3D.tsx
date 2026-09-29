@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { UxellLogo } from './UxellLogo';
+import { SarmientoLogo } from './SarmientoLogo';
 
 export const PaintCan3D: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,7 +15,6 @@ export const PaintCan3D: React.FC = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-
       const deltaX = (e.clientX - centerX) / (rect.width / 2);
       const deltaY = (e.clientY - centerY) / (rect.height / 2);
 
@@ -33,11 +32,10 @@ export const PaintCan3D: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
 
-    // Subtle gentle floating orbit when idle
     const idleLoop = () => {
       if (!isInteracting) {
         autoAngle += 0.4;
-        setRotation((prev) => ({
+        setRotation(() => ({
           x: -8 + Math.sin(autoAngle * 0.03) * 6,
           y: Math.sin(autoAngle * 0.02) * 20,
         }));
@@ -85,7 +83,6 @@ export const PaintCan3D: React.FC = () => {
             boxShadow: 'inset 0 2px 6px rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.5)',
           }}
         >
-          {/* Inner paint preview inside can opening */}
           <div
             className="absolute inset-1.5 rounded-full"
             style={{
@@ -112,7 +109,6 @@ export const PaintCan3D: React.FC = () => {
             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
           }}
         >
-          {/* Specular metallic light reflection streak */}
           <div
             className="absolute inset-0 pointer-events-none opacity-40 transition-transform duration-100"
             style={{
@@ -121,7 +117,6 @@ export const PaintCan3D: React.FC = () => {
             }}
           />
 
-          {/* Top of can label */}
           <div className="relative z-10 flex items-center justify-between border-b border-slate-700/60 pb-2">
             <span className="text-[10px] font-bold tracking-widest uppercase text-amber-400">
               NOBLEZA & OFICIO
@@ -131,9 +126,8 @@ export const PaintCan3D: React.FC = () => {
             </span>
           </div>
 
-          {/* Center Brand Identity (Üxell Pinturas Logo) */}
           <div className="relative z-10 my-auto py-2 text-center">
-            <UxellLogo className="h-14 w-auto mx-auto drop-shadow-md" />
+            <SarmientoLogo className="h-12 w-auto mx-auto drop-shadow-md justify-center" showSubtitle={false} />
             <div className="mt-2 text-xs font-bold text-slate-100 uppercase tracking-wide">
               Látex Acrílico Profesional
             </div>
@@ -142,10 +136,9 @@ export const PaintCan3D: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom of can label with Sarmiento Sucursal Salta */}
           <div className="relative z-10 pt-2 border-t border-slate-700/60 flex items-center justify-between text-[10px]">
             <span className="font-extrabold text-white uppercase tracking-tight">
-              Pintureria Sarmiento
+              Pinturería Sarmiento
             </span>
             <span className="text-rose-400 font-bold">
               Sucursal Salta
@@ -153,7 +146,6 @@ export const PaintCan3D: React.FC = () => {
           </div>
         </div>
 
-        {/* 3D Depth Sides (Simulated Cylinder Depth) */}
         <div
           className="absolute inset-y-1 -left-2 w-4 rounded-l-2xl pointer-events-none"
           style={{
@@ -169,7 +161,6 @@ export const PaintCan3D: React.FC = () => {
           }}
         />
 
-        {/* Bottom Chrome Base Ring */}
         <div
           className="absolute -bottom-2 left-1 right-1 h-6 rounded-b-xl border-t border-slate-600"
           style={{

@@ -260,7 +260,7 @@ export const BusinessInfo: React.FC = () => {
                 ¿Estás cerca de calle Salta 258? Pasá a retirar tu pedido sin demoras
               </h3>
               <p className="text-sm text-slate-300 leading-relaxed max-w-2xl">
-                Contamos con estacionamiento momentáneo para carga pesada de baldes de 20 litros, personal capacitado para cargar tus productos y catálogo de muestras reales Üxell para comparar acabados a la luz natural.
+                Contamos con estacionamiento momentáneo para carga pesada de baldes de 20 litros, personal capacitado para cargar tus productos y catálogo de muestras reales Sarmiento para comparar acabados a la luz natural.
               </p>
 
               <div className="flex flex-wrap items-center gap-6 pt-2 text-xs text-slate-300">

@@ -46,7 +46,7 @@ export const ColorVisualizer: React.FC = () => {
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hola Pintureria Sarmiento Sucursal Salta! Me gustó el color "${selectedColor.name}" (Código Üxell: ${selectedColor.code}). ¿Me podrían preparar este tono o pasarme cotización?`
+    `Hola Pintureria Sarmiento Sucursal Salta! Me gustó el color "${selectedColor.name}" (Código Sarmiento: ${selectedColor.code}). ¿Me podrían preparar este tono o pasarme cotización?`
   );
 
   return (
@@ -56,7 +56,7 @@ export const ColorVisualizer: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="text-xs font-bold tracking-widest uppercase text-rose-500">
-            Sistema Tintométrico Üxell
+            Sistema Tintométrico Sarmiento
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
             Explorador de Paletas & Tendencias
@@ -89,7 +89,7 @@ export const ColorVisualizer: React.FC = () => {
                 {/* Overlaid frame art */}
                 <div className="relative z-10 w-28 h-36 rounded-lg bg-white/90 shadow-xl border border-white/40 p-2 flex flex-col justify-end">
                   <div className="w-full h-full bg-slate-900/10 rounded flex items-center justify-center text-[10px] font-bold text-slate-700">
-                    Üxell Decó
+                    Sarmiento Decó
                   </div>
                 </div>
 
@@ -152,7 +152,7 @@ export const ColorVisualizer: React.FC = () => {
           <div className="lg:col-span-6 space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                Seleccioná una tonalidad Üxell
+                Seleccioná una tonalidad Sarmiento
               </span>
               <span className="text-xs text-rose-400 font-semibold flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
@@ -198,7 +198,7 @@ export const ColorVisualizer: React.FC = () => {
             </div>
 
             <div className="p-4 rounded-xl bg-slate-900 border border-slate-800/80 text-xs text-slate-400 leading-relaxed">
-              💡 <strong>Tip de expertos en Salta 258:</strong> Si traés un trozo de revoque, tela, baldosa o muestra de cortina, escaneamos el tono con espectrofotómetro para lograr la fórmula exacta de pintura Üxell.
+              💡 <strong>Tip de expertos en Salta 258:</strong> Si traés un trozo de revoque, tela, baldosa o muestra de cortina, escaneamos el tono con espectrofotómetro para lograr la fórmula exacta de pintura Sarmiento.
             </div>
           </div>
 
